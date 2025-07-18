@@ -2,157 +2,208 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Essential for responsive design across devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First GitHub Pages Site</title>
-    <!-- Link to Tailwind CSS CDN for styling -->
+    <title>GG Gallery - Your Trusted Electronic Store in Kathmandu</title>
+    <!-- Tailwind CSS CDN for easy styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom font for a modern look */
         body {
             font-family: 'Inter', sans-serif;
         }
+        /* Custom animation for hero text */
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .animate-slide-in {
+            animation: slideInFromLeft 1s ease-out forwards;
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-purple-100 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
 
     <!-- Header Section: Navigation Bar -->
-    <header class="bg-blue-700 text-white p-4 shadow-lg">
+    <header class="bg-blue-800 text-white p-4 shadow-lg">
         <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-            <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-800 transition-colors mb-2 sm:mb-0">
-                MySite
+            <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-700 transition-colors mb-2 sm:mb-0">
+                GG Gallery
             </a>
             <ul class="flex space-x-4">
-                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">About</a></li>
-                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Services</a></li>
-                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Contact</a></li>
+                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">About Us</a></li>
+                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Products & Services</a></li>
+                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Testimonials</a></li>
+                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content Section -->
-    <main class="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-
-        <!-- Hero Section -->
-        <section class="bg-white rounded-xl shadow-2xl p-6 sm:p-8 mb-12 text-center transform hover:scale-102 transition-transform duration-300">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-purple-700 mb-4 animate-fade-in-down">
-                Welcome to My Awesome GitHub Pages Site!
-            </h1>
-            <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6 animate-fade-in-up">
-                This is a simple, responsive website built with HTML and styled beautifully with Tailwind CSS,
-                now hosted for free on GitHub Pages.
-            </p>
-            <div class="flex justify-center">
-                <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-purple-300">
-                    Explore Our Features
-                </button>
+    <!-- Hero Section -->
+    <main class="flex-grow">
+        <section class="relative bg-cover bg-center h-96 flex items-center justify-center text-white" style="background-image: url('https://placehold.co/1200x600/3b82f6/ffffff?text=GG+Gallery+Electronics');">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="z-10 text-center p-4">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-slide-in">
+                    GG Gallery
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 animate-fade-in">
+                    Your One-Stop Shop for Quality Electronics in Kathmandu
+                </p>
+                <a href="#contact" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Visit Our Store
+                </a>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="bg-white rounded-xl shadow-lg p-6 sm:p-8 mb-12">
-            <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">About This Project</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="text-gray-700 leading-relaxed">
+        <!-- About Us Section -->
+        <section id="about" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-md mt-8">
+            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">About GG Gallery</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/a78bfa/ffffff?text=Our+Electronic+Store" alt="Our Electronic Store" class="rounded-lg shadow-lg max-w-full h-auto">
+                </div>
+                <div class="md:w-1/2 text-lg text-gray-700 leading-relaxed">
                     <p class="mb-4">
-                        This project serves as a practical demonstration of how to build a basic static website
-                        using pure HTML and enhance its aesthetics with the utility-first CSS framework, Tailwind CSS.
-                        It's designed to be fully responsive, ensuring a great user experience on any device.
+                        Welcome to GG Gallery! We are a dedicated electronic store committed to serving our community in Kathmandu with excellence.
+                        Established in 2025, we've built a reputation for reliability and customer satisfaction.
+                    </p>
+                    <p class="mb-4">
+                        Our mission is to provide the latest and most reliable electronic products, ensuring our customers get the best value.
+                        We believe in quality, affordability, and excellent customer service.
                     </p>
                     <p>
-                        By following this guide, you'll learn the fundamental workflow for web development:
-                        coding locally, managing your project with Git, and deploying it to a live environment
-                        using GitHub Pages.
-                    </p>
-                </div>
-                <div class="flex justify-center">
-                    <img src="https://placehold.co/400x250/6d28d9/ffffff?text=Web+Development" alt="Web Development Concept" class="rounded-lg shadow-md max-w-full h-auto">
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="bg-white rounded-xl shadow-lg p-6 sm:p-8 mb-12">
-            <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">Our Services (Example)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service Card 1 -->
-                <div class="bg-blue-50 p-6 rounded-lg shadow-md text-center transform hover:translate-y-[-5px] transition-transform duration-200">
-                    <div class="text-5xl text-blue-600 mb-4">💡</div>
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">Idea Generation</h3>
-                    <p class="text-gray-600">
-                        We help you brainstorm and refine your web project ideas.
-                    </p>
-                </div>
-                <!-- Service Card 2 -->
-                <div class="bg-green-50 p-6 rounded-lg shadow-md text-center transform hover:translate-y-[-5px] transition-transform duration-200">
-                    <div class="text-5xl text-green-600 mb-4">💻</div>
-                    <h3 class="text-xl font-semibold text-green-800 mb-2">Front-end Development</h3>
-                    <p class="text-gray-600">
-                        Crafting beautiful and responsive user interfaces with HTML, CSS, and JavaScript.
-                    </p>
-                </div>
-                <!-- Service Card 3 -->
-                <div class="bg-purple-50 p-6 rounded-lg shadow-md text-center transform hover:translate-y-[-5px] transition-transform duration-200">
-                    <div class="text-5xl text-purple-600 mb-4">🚀</div>
-                    <h3 class="text-xl font-semibold text-purple-800 mb-2">Deployment & Hosting</h3>
-                    <p class="text-gray-600">
-                        Getting your website live on platforms like GitHub Pages.
+                        Our passionate team are experts in electronics and customer support. We look forward to helping you find the perfect gadget!
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="bg-white rounded-xl shadow-lg p-6 sm:p-8">
-            <h2 class="text-3xl font-bold text-blue-700 mb-6 text-center">Get in Touch</h2>
-            <form class="max-w-md mx-auto space-y-4">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
-                    <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="John Doe">
+        <!-- Services Section (Renamed to Products & Services) -->
+        <section id="services" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">Our Products & Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Item 1: New Gadgets & Devices -->
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200">
+                    <div class="text-5xl text-blue-600 mb-4">📱</div>
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Latest Gadgets & Devices</h3>
+                    <p class="text-gray-700">
+                        Explore our wide range of smartphones, laptops, smart home devices, and more from top brands.
+                    </p>
                 </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
-                    <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com">
+                <!-- Service Item 2: Repair & Support -->
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200">
+                    <div class="text-5xl text-green-600 mb-4">🛠️</div>
+                    <h3 class="text-2xl font-semibold text-green-800 mb-2">Repair & Technical Support</h3>
+                    <p class="text-gray-700">
+                        Expert repair services for your electronic devices and friendly technical assistance.
+                    </p>
                 </div>
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Your message here..."></textarea>
+                <!-- Service Item 3: Accessories & Peripherals -->
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200">
+                    <div class="text-5xl text-purple-600 mb-4">🎧</div>
+                    <h3 class="text-2xl font-semibold text-purple-800 mb-2">Accessories & Peripherals</h3>
+                    <p class="text-gray-700">
+                        Find essential accessories like headphones, chargers, cases, and computer peripherals.
+                    </p>
                 </div>
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300">
-                    Send Message
-                </button>
-            </form>
-            <p class="text-center text-gray-600 mt-6">
-                (Note: This form is for demonstration. It won't send actual emails without a backend.)
-            </p>
+                <!-- Add more service items as needed -->
+            </div>
         </section>
 
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="bg-blue-50 py-12 px-4 sm:px-6 lg:px-8 rounded-lg shadow-md">
+            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">What Our Clients Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-lg text-gray-700 italic mb-4">
+                        "Outstanding service! GG Gallery truly goes above and beyond. Highly recommend their product range and support!"
+                    </p>
+                    <p class="font-semibold text-gray-800">- Jane Doe, Local Resident</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-lg text-gray-700 italic mb-4">
+                        "Professional, efficient, and friendly. We've been buying from GG Gallery for years and are always impressed."
+                    </p>
+                    <p class="font-semibold text-gray-800">- John Smith, Small Business Owner</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-md mt-8 mb-8">
+            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">Contact Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Information -->
+                <div class="space-y-4 text-lg text-gray-700">
+                    <p><strong class="text-blue-800">Address:</strong> Mahaboudha, Kathmandu, Nepal</p>
+                    <p><strong class="text-blue-800">Phone:</strong> <a href="tel:+97798XXXXXXXX" class="text-blue-600 hover:underline">+977-98XXXXXXXX</a></p>
+                    <p><strong class="text-blue-800">Email:</strong> <a href="mailto:info@ggallery.com" class="text-blue-600 hover:underline">info@ggallery.com</a></p>
+                    <p><strong class="text-blue-800">Business Hours:</strong> Mon - Fri: 9:00 AM - 5:00 PM</p>
+                    <!-- Google Map embed for Mahaboudha, Kathmandu -->
+                    <div class="mt-6">
+                        <h3 class="text-xl font-semibold text-blue-800 mb-2">Find Us on the Map:</h3>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14130.01524317926!2d85.31843105!3d27.7008137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190220000001%3A0x72a5a0d3b6f2d2b!2sKathmandu%2C%20Nepal!5e0!3m2!1sen!2snp!4v1721327885000!5m2!1sen!2snp"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            class="rounded-lg shadow-md"
+                        ></iframe>
+                        <p class="text-sm text-gray-500 mt-2">
+                            (This map shows Kathmandu. For precise location, get embed code from Google Maps for "Mahaboudha, Kathmandu".)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-800 mb-4">Send Us a Message:</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="contact-name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                            <input type="text" id="contact-name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="contact-email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                            <input type="email" id="contact-email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com">
+                        </div>
+                        <div>
+                            <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="contact-message" name="message" rows="5" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                            Send Message
+                        </button>
+                    </form>
+                    <p class="text-center text-gray-600 mt-4 text-sm">
+                        (Note: This form is for demonstration. It won't send actual emails without a backend service.)
+                    </p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-gray-900 text-white p-6 text-center shadow-inner mt-12">
-        <p>&copy; 2025 My GitHub Pages Site. All rights reserved.</p>
-        <p class="text-sm mt-2">Proudly hosted on GitHub Pages.</p>
+    <footer class="bg-gray-900 text-white p-6 text-center shadow-inner mt-auto">
+        <div class="container mx-auto">
+            <p>&copy; 2025 GG Gallery. All rights reserved.</p>
+            <p class="text-sm mt-2">Designed and Hosted with ❤️ on GitHub Pages.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <!-- Social Media Links (replace # with actual links) -->
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Instagram</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Simple CSS for animations (optional, but adds flair) -->
-    <style>
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-down {
-            animation: fadeInDown 1s ease-out forwards;
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
-            animation-delay: 0.3s; /* Delay for a staggered effect */
-        }
-    </style>
 </body>
 </html>
