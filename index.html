@@ -9,128 +9,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom font for a modern look */
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Updated: Removed text from the background image */
-            background-image: url('https://placehold.co/1920x1080/f5f5f5/transparent'); /* Plain light gray background */
-            background-size: cover;
-            background-attachment: fixed;
-            background-color: #f5f5f5; /* Fallback color */
-            color: #333; /* Default text color for the body */
-        }
+        body { font-family: 'Inter', sans-serif; background-image: url('https://placehold.co/1920x1080/f5f5f5/transparent'); background-size: cover; background-attachment: fixed; background-color: #f5f5f5; color: #333; }
         /* Custom animation for hero text */
-        @keyframes slideInFromLeft {
-            0% { transform: translateX(-100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        .animate-slide-in {
-            animation: slideInFromLeft 1s ease-out forwards;
-        }
-        .animate-fade-in {
-            animation: fadeIn 1.5s ease-out forwards;
-        }
+        @keyframes slideInFromLeft { 0% { transform: translateX(-100%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .animate-slide-in { animation: slideInFromLeft 1s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
         /* New custom styles for the hero section background */
-        .hero-background {
-            /* Background image now explicitly says "Wholesale Suppliers of Electronics" */
-            background-image: url('https://placehold.co/1920x1080/e0e0e0/000000?text=Wholesale+Suppliers+of+Electronics');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Makes the background scroll with parallax effect */
-        }
-        .hero-overlay {
-            /* Adjusted for a lighter background to maintain contrast with white text */
-            background-color: rgba(0, 0, 0, 0.4); /* Slightly less opaque dark overlay */
-        }
+        .hero-background { background-image: url('tiltebackground.png'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .hero-overlay { background-color: rgba(0, 0, 0, 0.4); }
         /* New styles for the combined hero title and location box */
-        .hero-text-box {
-            padding: 0.6em 1.2em; /* Padding for the box */
-            border-radius: 15px; /* More rounded corners */
-            transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
-            display: block; /* Changed to block for margin auto centering */
-            margin: 0 auto 2rem auto; /* Centered horizontally, space below */
-            text-align: center; /* Center content within the box */
-            max-width: fit-content; /* Ensures box only takes content width */
-
-            /* Border with a subtle gradient - Changed to silver/gray palette */
-            border: 4px solid;
-            border-image: linear-gradient(45deg, #A0AEC0, #CBD5E0) 1; /* Gray-400 to Gray-300 */
-            border-image-slice: 1;
-
-            /* Text shadow for depth and glow - Changed to silver/white */
-            text-shadow: 0 0 10px rgba(255,255,255,0.8), /* White glow */
-                         0 0 20px rgba(160,174,192,0.6), /* Gray-400 glow */
-                         0 5px 15px rgba(0,0,0,0.6); /* Standard shadow */
-        }
-
-        .hero-text-box h1 {
-            font-size: 4.5rem; /* Larger font size for prominence */
-            letter-spacing: 0.1em; /* Spacing out letters */
-            font-weight: 900; /* Make it extra bold */
-            margin-bottom: 0.2em; /* Small margin between title and location */
-
-            /* Gradient text effect - Changed to silver/white palette */
-            background: linear-gradient(45deg, #E2E8F0, #CBD5E0, #F7FAFC); /* Gray-200, Gray-300, White */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent; /* Fallback for non-webkit browsers */
-        }
-
-        .hero-text-box p {
-            font-size: 1.5rem; /* Adjust font size for location */
-            margin-top: 0; /* Remove default paragraph margin */
-            color: white; /* Ensure location text is white */
-        }
-
-        .hero-text-box:hover {
-            transform: scale(1.03); /* Slight scale up on hover */
-            /* Text shadow on hover - Adjusted for new silver/white palette */
-            text-shadow: 0 0 15px rgba(255,255,255,0.9), /* More intense white glow */
-                         0 0 25px rgba(160,174,192,0.8), /* More intense gray-400 glow */
-                         0 8px 20px rgba(0,0,0,0.8); /* More pronounced shadow */
-        }
-
-        @media (max-width: 768px) {
-            .hero-text-box h1 {
-                font-size: 2.8rem; /* Adjust for smaller screens */
-                letter-spacing: 0.05em;
-            }
-            .hero-text-box p {
-                font-size: 1.2rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .hero-text-box h1 {
-                font-size: 2rem; /* Even smaller for very small screens */
-            }
-            .hero-text-box p {
-                font-size: 1rem;
-            }
-        }
-
+        .hero-text-box { padding: 0.6em 1.2em; border-radius: 15px; transition: all 0.3s ease-in-out; display: block; margin: 0 auto 2rem auto; text-align: center; max-width: fit-content; border: 4px solid; border-image: linear-gradient(45deg, #A0AEC0, #CBD5E0) 1; border-image-slice: 1; text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(160,174,192,0.6), 0 5px 15px rgba(0,0,0,0.6); }
+        .hero-text-box h1 { font-size: 4.5rem; letter-spacing: 0.1em; font-weight: 900; margin-bottom: 0.2em; background: linear-gradient(45deg, #E2E8F0, #CBD5E0, #F7FAFC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; }
+        .hero-text-box p { font-size: 1.5rem; margin-top: 0; color: white; }
+        .hero-text-box:hover { transform: scale(1.03); text-shadow: 0 0 15px rgba(255,255,255,0.9), 0 0 25px rgba(160,174,192,0.8), 0 8px 20px rgba(0,0,0,0.8); }
+        @media (max-width: 768px) { .hero-text-box h1 { font-size: 2.8rem; letter-spacing: 0.05em; } .hero-text-box p { font-size: 1.2rem; } }
+        @media (max-width: 480px) { .hero-text-box h1 { font-size: 2rem; } .hero-text-box p { font-size: 1rem; } }
         /* Existing custom styles for About Us section background */
-        .about-us-section {
-            background-image: url('https://placehold.co/1920x1080/e0e0e0/333333?text=Subtle+Background+Pattern'); /* A lighter, subtle pattern background */
-            background-size: cover;
-            background-position: center;
-            position: relative; /* Needed for overlay positioning */
-            z-index: 1; /* Ensure content is above background */
-            color: #333; /* Default text color for this section */
-        }
-        .about-us-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.85); /* Slightly transparent white overlay */
-            z-index: -1; /* Place behind content */
-            border-radius: 0.5rem; /* Match parent section's rounded corners */
-        }
+        .about-us-section { background-image: url('https://placehold.co/1920x1080/e0e0e0/333333?text=Subtle+Background+Pattern'); background-size: cover; background-position: center; position: relative; z-index: 1; color: #333; }
+        .about-us-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.85); z-index: -1; border-radius: 0.5rem; }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
@@ -138,10 +35,7 @@
     <!-- Header Section: Navigation Bar -->
     <header class="bg-blue-800 text-white p-4 shadow-lg">
         <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-            <!-- Reverted to text for site name in header -->
-            <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-700 transition-colors mb-2 sm:mb-0">
-                GG Gallery
-            </a>
+            <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-700 transition-colors mb-2 sm:mb-0">GG Gallery</a>
             <ul class="flex space-x-4">
                 <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Home</a></li>
                 <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">About Us</a></li>
@@ -158,16 +52,10 @@
         <div class="z-10 text-center p-4">
             <!-- New container for GG GALLERY and Location -->
             <div class="hero-text-box animate-fade-in">
-                <h1>
-                    GG GALLERY
-                </h1>
-                <p>
-                    Mahaboudha, Kathmandu, Nepal
-                </p>
+                <h1>GG GALLERY</h1>
+                <p>Mahaboudha, Kathmandu, Nepal</p>
             </div>
-            <a href="#contact" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 mt-8 inline-block" style="animation-delay: 1s;">
-                Visit Our Store
-            </a>
+            <a href="#contact" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 mt-8 inline-block" style="animation-delay: 1s;">Visit Our Store</a>
         </div>
     </section>
 
@@ -183,15 +71,9 @@
                     <img src="gg.gallerylogo.png" alt="GG Gallery Store Interior" class="rounded-lg shadow-lg max-w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x400/a78bfa/ffffff?text=Image+Not+Found';">
                 </div>
                 <div class="md:w-1/2 text-lg text-gray-700 leading-relaxed">
-                    <p class="mb-4">
-                        Welcome to GG Gallery! Since the early 2000s, we have been a leading electronic **wholesale and retail supplier** in Mahaboudha, Kathmandu. We are dedicated to providing high-quality products and ensuring unparalleled customer satisfaction.
-                    </p>
-                    <p class="mb-4">
-                        Our extensive inventory includes **televisions, home theater systems, projectors, washing machines, refrigerators, TV mounts**, and a diverse array of other essential electronic appliances and accessories.
-                    </p>
-                    <p>
-                        Our passionate and knowledgeable team comprises experts in electronics and dedicated customer support. We are committed to assisting you in finding the perfect electronic solutions, whether you are a business seeking bulk supplies or an individual looking for quality products for personal use.
-                    </p>
+                    <p class="mb-4">Welcome to GG Gallery! Since the early 2000s, we have been a leading electronic **wholesale and retail supplier** in Mahaboudha, Kathmandu. We are dedicated to providing high-quality products and ensuring unparalleled customer satisfaction.</p>
+                    <p class="mb-4">Our extensive inventory includes **televisions, home theater systems, projectors, washing machines, refrigerators, TV mounts**, and a diverse array of other essential electronic appliances and accessories.</p>
+                    <p>Our passionate and knowledgeable team comprises experts in electronics and dedicated customer support. We are committed to assisting you in finding the perfect electronic solutions, whether you are a business seeking bulk supplies or an individual looking for quality products for personal use.</p>
                 </div>
             </div>
         </section>
@@ -199,40 +81,29 @@
         <!-- Services Section (Renamed to Products & Services) -->
         <section id="services" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">Explore Our Electronics Collection</h2>
-            <p class="text-lg text-center text-gray-700 mb-10 max-w-3xl mx-auto">
-                At GG Gallery, we bring you a diverse range of high-quality electronics, from cutting-edge entertainment systems to essential home appliances. Discover products that enhance your lifestyle and empower your business.
-            </p>
+            <p class="text-lg text-center text-gray-700 mb-10 max-w-3xl mx-auto">At GG Gallery, we bring you a diverse range of high-quality electronics, from cutting-edge entertainment systems to essential home appliances. Discover products that enhance your lifestyle and empower your business.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service Item 1: Home Entertainment -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-blue-500">
                     <div class="text-5xl text-blue-600 mb-4">📺</div>
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">Immersive Home Entertainment</h3>
-                    <p class="text-gray-700">
-                        Dive into a world of vibrant visuals and rich audio with our premium **televisions, state-of-the-art home theater systems, and high-definition projectors**. Perfect for every movie night or presentation.
-                    </p>
+                    <p class="text-gray-700">Dive into a world of vibrant visuals and rich audio with our premium **televisions, state-of-the-art home theater systems, and high-definition projectors**. Perfect for every movie night or presentation.</p>
                 </div>
                 <!-- Service Item 2: Home Appliances -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-green-500">
                     <div class="text-5xl text-green-600 mb-4">🧺</div>
                     <h3 class="text-2xl font-semibold text-green-800 mb-2">Reliable Home Essentials</h3>
-                    <p class="text-gray-700">
-                        Simplify your daily life with our durable and energy-efficient **washing machines and modern refrigerators**. Designed for convenience and long-lasting performance.
-                    </p>
+                    <p class="text-gray-700">Simplify your daily life with our durable and energy-efficient **washing machines and modern refrigerators**. Designed for convenience and long-lasting performance.</p>
                 </div>
                 <!-- Service Item 3: Audio & Accessories -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-purple-500">
                     <div class="text-5xl text-purple-600 mb-4">🔊</div>
                     <h3 class="text-2xl font-semibold text-purple-800 mb-2">Dynamic Audio & Mounting</h3>
-                    <p class="text-gray-700">
-                        Experience powerful sound on the go with our versatile **trolley speakers**, and achieve the perfect viewing angle with our robust **TV mounts**.
-                    </p>
+                    <p class="text-gray-700">Experience powerful sound on the go with our versatile **trolley speakers**, and achieve the perfect viewing angle with our robust **TV mounts**.</p>
                 </div>
-                <!-- You can add more service items here if needed -->
             </div>
             <div class="text-center mt-12">
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-                    Inquire About Products
-                </a>
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Inquire About Products</a>
             </div>
         </section>
 
@@ -242,23 +113,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Testimonial: Radhe Shyam Electronics -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <p class="text-lg text-gray-700 italic mb-4">
-                        "GG Gallery has been our reliable partner for wholesale electronics. Their quality and service are consistently excellent."
-                    </p>
+                    <p class="text-lg text-gray-700 italic mb-4">"GG Gallery has been our reliable partner for wholesale electronics. Their quality and service are consistently excellent."</p>
                     <p class="font-semibold text-gray-800">- Radhe Shyam Electronics, Bhaktapur</p>
                 </div>
                 <!-- New Testimonial: Hari Khanal -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <p class="text-lg text-gray-700 italic mb-4">
-                        "The range of products and the competitive pricing at GG Gallery are unmatched. A truly dependable supplier!"
-                    </p>
+                    <p class="text-lg text-gray-700 italic mb-4">"The range of products and the competitive pricing at GG Gallery are unmatched. A truly dependable supplier!"</p>
                     <p class="font-semibold text-gray-800">- Hari Khanal, Chitwan</p>
                 </div>
                 <!-- New Testimonial: Shyam Shrestha -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <p class="text-lg text-gray-700 italic mb-4">
-                        "Excellent customer support and timely delivery. GG Gallery makes sourcing electronics easy and reliable."
-                    </p>
+                    <p class="text-lg text-gray-700 italic mb-4">"Excellent customer support and timely delivery. GG Gallery makes sourcing electronics easy and reliable."</p>
                     <p class="font-semibold text-gray-800">- Shyam Shrestha, Gorkha</p>
                 </div>
             </div>
@@ -297,13 +162,9 @@
                             <label for="contact-message" class="block text-sm font-medium text-gray-700">Message</label>
                             <textarea id="contact-message" name="message" rows="5" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Your message here..."></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300">
-                            Send Message
-                        </button>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md shadow-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300">Send Message</button>
                     </form>
-                    <p class="text-center text-gray-600 mt-4 text-sm">
-                        (Note: This form is for demonstration. It won't send actual emails without a backend service.)
-                    </p>
+                    <p class="text-center text-gray-600 mt-4 text-sm">(Note: This form is for demonstration. It won't send actual emails without a backend service.)</p>
                 </div>
             </div>
         </section>
@@ -315,7 +176,6 @@
             <p>&copy; 2025 GG Gallery. All rights reserved.</p>
             <p class="text-sm mt-2">Designed and Hosted with ❤️ on GitHub Pages.</p>
             <div class="flex justify-center space-x-4 mt-4">
-                <!-- Social Media Links (replace # with actual links) -->
                 <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
                 <a href="#" class="text-400 hover:text-white transition-colors">Instagram</a>
                 <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
