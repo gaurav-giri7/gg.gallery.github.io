@@ -39,23 +39,72 @@
             /* Adjusted for a lighter background to maintain contrast with white text */
             background-color: rgba(0, 0, 0, 0.4); /* Slightly less opaque dark overlay */
         }
-        .hero-title {
+        /* New styles for the combined hero title and location box */
+        .hero-text-box {
+            padding: 0.6em 1.2em; /* Padding for the box */
+            border-radius: 15px; /* More rounded corners */
+            transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+            display: inline-block; /* To make border fit content */
+            margin-bottom: 2rem; /* Space below the box */
+            text-align: center; /* Center content within the box */
+
+            /* Border with a subtle gradient */
+            border: 4px solid;
+            border-image: linear-gradient(45deg, #4682B4, #87CEEB) 1; /* SteelBlue to SkyBlue gradient */
+            border-image-slice: 1;
+
+            /* Text shadow for depth and glow */
+            text-shadow: 0 0 10px rgba(255,255,255,0.8), /* White glow */
+                         0 0 20px rgba(135,206,235,0.6), /* Sky Blue glow */
+                         0 5px 15px rgba(0,0,0,0.6); /* Standard shadow */
+        }
+
+        .hero-text-box h1 {
             font-size: 4.5rem; /* Larger font size for prominence */
             letter-spacing: 0.1em; /* Spacing out letters */
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Subtle shadow for depth */
-            border: 4px solid white; /* White border around the text */
-            padding: 0.5em 1em; /* Padding around the text */
-            display: inline-block; /* To apply border and padding correctly */
-            border-radius: 10px; /* Slightly rounded corners for the border */
+            font-weight: 900; /* Make it extra bold */
+            margin-bottom: 0.2em; /* Small margin between title and location */
+
+            /* Gradient text effect */
+            background: linear-gradient(45deg, #ADD8E6, #87CEEB, #FFFFFF); /* Light Blue, Sky Blue, White gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; /* Fallback for non-webkit browsers */
         }
+
+        .hero-text-box p {
+            font-size: 1.5rem; /* Adjust font size for location */
+            margin-top: 0; /* Remove default paragraph margin */
+            color: white; /* Ensure location text is white */
+        }
+
+        .hero-text-box:hover {
+            transform: scale(1.03); /* Slight scale up on hover */
+            text-shadow: 0 0 15px rgba(255,255,255,0.9), /* More intense white glow */
+                         0 0 25px rgba(135,206,235,0.8), /* More intense sky blue glow */
+                         0 8px 20px rgba(0,0,0,0.8); /* More pronounced shadow */
+        }
+
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 3rem; /* Adjust for smaller screens */
-                padding: 0.4em 0.8em;
+            .hero-text-box h1 {
+                font-size: 2.8rem; /* Adjust for smaller screens */
+                letter-spacing: 0.05em;
+            }
+            .hero-text-box p {
+                font-size: 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-text-box h1 {
+                font-size: 2rem; /* Even smaller for very small screens */
+            }
+            .hero-text-box p {
+                font-size: 1rem;
             }
         }
 
-        /* New custom styles for About Us section background */
+        /* Existing custom styles for About Us section background */
         .about-us-section {
             background-image: url('https://placehold.co/1920x1080/e0e0e0/333333?text=Subtle+Background+Pattern'); /* A lighter, subtle pattern background */
             background-size: cover;
@@ -99,13 +148,16 @@
     <section class="relative hero-background h-96 flex items-center justify-center text-white">
         <div class="absolute inset-0 hero-overlay"></div>
         <div class="z-10 text-center p-4">
-            <h1 class="hero-title font-extrabold mb-4 animate-fade-in">
-                GG GALLERY
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 animate-fade-in" style="animation-delay: 0.5s;">
-                Mahaboudha, Kathmandu, Nepal
-            </p>
-            <a href="#contact" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105" style="animation-delay: 1s;">
+            <!-- New container for GG GALLERY and Location -->
+            <div class="hero-text-box animate-fade-in">
+                <h1>
+                    GG GALLERY
+                </h1>
+                <p>
+                    Mahaboudha, Kathmandu, Nepal
+                </p>
+            </div>
+            <a href="#contact" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 mt-8 inline-block" style="animation-delay: 1s;">
                 Visit Our Store
             </a>
         </div>
@@ -120,7 +172,7 @@
             <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
                 <div class="md:w-1/2">
                     <!-- About Us image source updated to gg.gallery.png with onerror fallback -->
-                    <img src="gg.gallerylogo.png" alt="GG Gallery Store Interior" class="rounded-lg shadow-lg max-w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x400/a78bfa/ffffff?text=Image+Not+Found';">
+                    <img src="gg.gallery.png" alt="GG Gallery Store Interior" class="rounded-lg shadow-lg max-w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x400/a78bfa/ffffff?text=Image+Not+Found';">
                 </div>
                 <div class="md:w-1/2 text-lg text-gray-700 leading-relaxed">
                     <p class="mb-4">
