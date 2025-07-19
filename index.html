@@ -25,12 +25,9 @@
         .hero-text-box:hover { transform: scale(1.03); text-shadow: 0 0 15px rgba(255,255,255,0.9), 0 0 25px rgba(160,174,192,0.8), 0 8px 20px rgba(0,0,0,0.8); }
         @media (max-width: 768px) { .hero-text-box h1 { font-size: 2.8rem; letter-spacing: 0.05em; } .hero-text-box p { font-size: 1.2rem; } }
         @media (max-width: 480px) { .hero-text-box h1 { font-size: 2rem; } .hero-text-box p { font-size: 1rem; } }
-        /* Existing custom styles for About Us section background */
-        .about-us-section { background-image: url('https://placehold.co/1920x1080/e0e0e0/333333?text=Subtle+Background+Pattern'); background-size: cover; background-position: center; position: relative; z-index: 1; color: #333; }
-        .about-us-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.85); z-index: -1; border-radius: 0.5rem; }
 
         /* Styles for the hamburger icon */
-        .hamburger-icon { display: none; /* Hidden by default */ cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
+        .hamburger-icon { display: none; cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
         .hamburger-icon div { width: 100%; height: 3px; background-color: white; border-radius: 2px; transition: all 0.3s ease-in-out; }
 
         /* Styles for the responsive navigation menu */
@@ -50,38 +47,35 @@
             .nav-full { display: flex !important; } /* Ensure full nav is always flex on larger screens */
             .nav-menu { display: none; } /* Hide the mobile menu */
         }
+        /* Existing custom styles for About Us section background */
+        .about-us-section { background-image: url('https://placehold.co/1920x1080/e0e0e0/333333?text=Subtle+Background+Pattern'); background-size: cover; background-position: center; position: relative; z-index: 1; color: #333; }
+        .about-us-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.85); z-index: -1; border-radius: 0.5rem; }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
 
     <!-- Header Section: Navigation Bar -->
-    <header class="bg-blue-800 text-white p-4 shadow-lg">
+    <header class="bg-blue-900 text-white p-4 shadow-lg">
         <nav class="container mx-auto flex flex-wrap justify-between items-center">
-            <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-700 transition-colors mb-2 sm:mb-0">GG Gallery</a>
-
-            <!-- Hamburger Icon for Mobile -->
+            <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-800 transition-colors mb-2 sm:mb-0">GG Gallery</a>
             <button id="hamburger" class="hamburger-icon sm:hidden focus:outline-none">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
             </button>
-
-            <!-- Full Navigation Menu for Desktop -->
             <ul class="flex space-x-4 nav-full hidden sm:flex">
-                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">About Us</a></li>
-                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Products & Services</a></li>
-                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Testimonials</a></li>
-                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Contact</a></li>
+                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">About Us</a></li>
+                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Products & Services</a></li>
+                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Testimonials</a></li>
+                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Contact</a></li>
             </ul>
-
-            <!-- Mobile Navigation Menu (initially hidden) -->
-            <ul id="mobile-menu" class="nav-menu hidden bg-blue-700 rounded-md mt-2 w-full">
-                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-600 block" onclick="toggleMenu()">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-600 block" onclick="toggleMenu()">About Us</a></li>
-                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-600 block" onclick="toggleMenu()">Products & Services</a></li>
-                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-600 block" onclick="toggleMenu()">Testimonials</a></li>
-                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-600 block" onclick="toggleMenu()">Contact</a></li>
+            <ul id="mobile-menu" class="nav-menu hidden bg-blue-800 rounded-md mt-2 w-full">
+                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">About Us</a></li>
+                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Products & Services</a></li>
+                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Testimonials</a></li>
+                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -95,7 +89,7 @@
                 <h1>GG GALLERY</h1>
                 <p>Mahaboudha, Kathmandu, Nepal</p>
             </div>
-            <a href="#contact" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 mt-8 inline-block" style="animation-delay: 1s;">Visit Our Store</a>
+            <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 mt-8 inline-block" style="animation-delay: 1s;">Visit Our Store</a>
         </div>
     </section>
 
@@ -124,26 +118,26 @@
             <p class="text-lg text-center text-gray-700 mb-10 max-w-3xl mx-auto">At GG Gallery, we bring you a diverse range of high-quality electronics, from cutting-edge entertainment systems to essential home appliances. Discover products that enhance your lifestyle and empower your business.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service Item 1: Home Entertainment -->
-                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-blue-500">
-                    <div class="text-5xl text-blue-600 mb-4">📺</div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tv text-cyan-600 mb-4 mx-auto"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">Immersive Home Entertainment</h3>
                     <p class="text-gray-700">Dive into a world of vibrant visuals and rich audio with our premium **televisions, state-of-the-art home theater systems, and high-definition projectors**. Perfect for every movie night or presentation.</p>
                 </div>
                 <!-- Service Item 2: Home Appliances -->
-                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-green-500">
-                    <div class="text-5xl text-green-600 mb-4">🧺</div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-washing-machine text-cyan-600 mb-4 mx-auto"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M12 18V8"/><path d="M16 18V8"/><path d="M8 18V8"/><path d="M17 18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10Z"/><circle cx="12" cy="13" r="3"/></svg>
                     <h3 class="text-2xl font-semibold text-green-800 mb-2">Reliable Home Essentials</h3>
                     <p class="text-gray-700">Simplify your daily life with our durable and energy-efficient **washing machines and modern refrigerators**. Designed for convenience and long-lasting performance.</p>
                 </div>
                 <!-- Service Item 3: Audio & Accessories -->
-                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-purple-500">
-                    <div class="text-5xl text-purple-600 mb-4">🔊</div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-speaker text-cyan-600 mb-4 mx-auto"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M12 14V8"/><path d="M12 18a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
                     <h3 class="text-2xl font-semibold text-purple-800 mb-2">Dynamic Audio & Mounting</h3>
                     <p class="text-gray-700">Experience powerful sound on the go with our versatile **trolley speakers**, and achieve the perfect viewing angle with our robust **TV mounts**.</p>
                 </div>
             </div>
             <div class="text-center mt-12">
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Inquire About Products</a>
+                <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Inquire About Products</a>
             </div>
         </section>
 
