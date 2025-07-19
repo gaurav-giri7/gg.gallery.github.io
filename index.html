@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +28,31 @@
         .animate-fade-in {
             animation: fadeIn 1.5s ease-out forwards;
         }
+        /* New custom styles for the hero section background */
+        .hero-background {
+            background-image: url('https://placehold.co/1920x1080/2c3e50/ecf0f1?text=Modern+Tech+Background'); /* A sleek, dark tech-inspired background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Makes the background scroll with parallax effect */
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.6); /* Darker overlay for better text contrast */
+        }
+        .hero-title {
+            font-size: 4.5rem; /* Larger font size for prominence */
+            letter-spacing: 0.1em; /* Spacing out letters */
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Subtle shadow for depth */
+            border: 4px solid white; /* White border around the text */
+            padding: 0.5em 1em; /* Padding around the text */
+            display: inline-block; /* To apply border and padding correctly */
+            border-radius: 10px; /* Slightly rounded corners for the border */
+        }
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem; /* Adjust for smaller screens */
+                padding: 0.4em 0.8em;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
@@ -34,9 +60,9 @@
     <!-- Header Section: Navigation Bar -->
     <header class="bg-blue-800 text-white p-4 shadow-lg">
         <nav class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-            <!-- Logo updated with the full filename -->
-            <a href="#" class="rounded-lg p-2 hover:bg-blue-700 transition-colors mb-2 sm:mb-0">
-                <img src="Gemini_Generated_Image_91tutn91tutn91tu.png-0f1bbe28-f415-468e-8e77-a4910d946836" alt="GG Gallery Logo" class="h-12 sm:h-16 w-auto object-contain">
+            <!-- Removed Logo - now using text for site name -->
+            <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-700 transition-colors mb-2 sm:mb-0">
+                GG Gallery
             </a>
             <ul class="flex space-x-4">
                 <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700">Home</a></li>
@@ -48,23 +74,24 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <main class="flex-grow">
-        <section class="relative bg-cover bg-center h-96 flex items-center justify-center text-white" style="background-image: url('https://placehold.co/1200x600/1e3a8a/ffffff?text=Modern+Electronics+at+GG+Gallery');">
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-            <div class="z-10 text-center p-4">
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-slide-in">
-                    GG Gallery
-                </h1>
-                <p class="text-xl md:text-2xl mb-8 animate-fade-in">
-                    Your One-Stop Shop for Quality Electronics in Kathmandu
-                </p>
-                <a href="#contact" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-                    Visit Our Store
-                </a>
-            </div>
-        </section>
+    <!-- Hero Section - Redesigned for prominent text and attractive background -->
+    <section class="relative hero-background h-96 flex items-center justify-center text-white">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="z-10 text-center p-4">
+            <h1 class="hero-title font-extrabold mb-4 animate-fade-in">
+                GG GALLERY
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 animate-fade-in" style="animation-delay: 0.5s;">
+                Your One-Stop Shop for Quality Electronics in Kathmandu
+            </p>
+            <a href="#contact" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105" style="animation-delay: 1s;">
+                Visit Our Store
+            </a>
+        </div>
+    </section>
 
+    <!-- Main Content Section -->
+    <main class="flex-grow">
         <!-- About Us Section -->
         <section id="about" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-md mt-8">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">About GG Gallery</h2>
@@ -174,7 +201,12 @@
                             class="rounded-lg shadow-md"
                         ></iframe>
                         <p class="text-sm text-gray-500 mt-2">
-                        
+                            **To display your exact location:**
+                            1. Go to your Google Maps link: `https://maps.app.goo.gl/yNgjuVvYy5aZ29oz7`
+                            2. On the Google Maps page, click the "Share" button (usually an arrow or share icon).
+                            3. Select the "Embed a map" tab.
+                            4. Copy the `<iframe>` code provided there.
+                            5. Replace the entire `src="..."` URL in the `<iframe>` tag above with the `src` URL you copied from Google Maps.
                         </p>
                     </div>
                 </div>
@@ -210,7 +242,7 @@
     <!-- Footer Section -->
     <footer class="bg-gray-900 text-white p-6 text-center shadow-inner mt-auto">
         <div class="container mx-auto">
-            <p>&copy; 2018 GG Gallery. All rights reserved.</p>
+            <p>&copy; 2025 GG Gallery. All rights reserved.</p>
             <p class="text-sm mt-2">Designed and Hosted with ❤️ on GitHub Pages.</p>
             <div class="flex justify-center space-x-4 mt-4">
                 <!-- Social Media Links (replace # with actual links) -->
