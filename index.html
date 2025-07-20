@@ -3,55 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated Title for Search Engines and Browser Tabs -->
     <title>GG Gallery | Electronics Wholesale & Retail | Kathmandu</title>
-    <!-- Tailwind CSS CDN for easy styling -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom font for a modern look */
-        body { font-family: 'Inter', sans-serif; background-image: url('https://placehold.co/1920x1080/f5f5f5/transparent'); background-size: cover; background-attachment: fixed; background-color: #f5f5f5; color: #333; scroll-behavior: smooth; /* Smooth scrolling for anchor links */ }
-        /* Custom animation for hero text */
-        @keyframes slideInFromLeft { 0% { transform: translateX(-100%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+        body { font-family: 'Inter', sans-serif; background-color: #f5f5f5; color: #333; scroll-behavior: smooth; }
+        /* Custom animations */
         @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .animate-slide-in { animation: slideInFromLeft 1s ease-out forwards; }
         .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
-        /* New custom styles for the hero section background */
-        .hero-background { background-image: url('tiltebackground.png'); background-size: cover; background-position: center; background-attachment: fixed; }
-        .hero-overlay { background-color: rgba(0, 0, 0, 0.4); }
-        /* New styles for the combined hero title and location box */
-        .hero-text-box { padding: 0.6em 1.2em; border-radius: 15px; transition: all 0.3s ease-in-out; display: block; margin: 0 auto 2rem auto; text-align: center; max-width: fit-content; border: 4px solid; border-image: linear-gradient(45deg, #A0AEC0, #CBD5E0) 1; border-image-slice: 1; text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(160,174,192,0.6), 0 5px 15px rgba(0,0,0,0.6); }
-        .hero-text-box h1 { font-size: 4.5rem; letter-spacing: 0.1em; font-weight: 900; margin-bottom: 0.2em; background: linear-gradient(45deg, #E2E8F0, #CBD5E0, #F7FAFC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; }
-        .hero-text-box p { font-size: 1.5rem; margin-top: 0; color: white; }
-        .hero-text-box:hover { transform: scale(1.03); text-shadow: 0 0 15px rgba(255,255,255,0.9), 0 0 25px rgba(160,174,192,0.8), 0 8px 20px rgba(0,0,0,0.8); }
-        @media (max-width: 768px) { .hero-text-box h1 { font-size: 2.8rem; letter-spacing: 0.05em; } .hero-text-box p { font-size: 1.2rem; } }
-        @media (max-width: 480px) { .hero-text-box h1 { font-size: 2rem; } .hero-text-box p { font-size: 1rem; } }
 
-        /* Styles for the hamburger icon */
-        .hamburger-icon { display: none; /* Hidden by default */ cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
+        /* Header Specific Styles */
+        .top-bar { background-color: #1a202c; /* Darker than main nav */ color: #cbd5e0; /* Light gray text */ font-size: 0.875rem; }
+        .main-nav { background-color: #2d3748; /* Dark blue-gray */ }
+        .sticky-header { position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+
+        /* Hamburger Icon Styles */
+        .hamburger-icon { display: none; cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
         .hamburger-icon div { width: 100%; height: 3px; background-color: white; border-radius: 2px; transition: all 0.3s ease-in-out; }
-
-        /* Styles for the responsive navigation menu */
         .nav-menu { display: none; flex-direction: column; width: 100%; text-align: center; }
         .nav-menu.active { display: flex; }
         .nav-menu li { margin: 0.5rem 0; }
 
-        /* Show hamburger on small screens, hide nav menu */
-        @media (max-width: 640px) {
+        /* Mobile specific styles for navigation */
+        @media (max-width: 768px) { /* Changed breakpoint to 768px for menu collapse */
             .hamburger-icon { display: flex; }
-            .nav-full { display: none; } /* Hide full nav on small screens */
-            .nav-menu a { display: block; padding: 0.75rem 1rem; border-radius: 0.375rem; } /* Add padding for touch targets */
+            .nav-full { display: none; }
+            .nav-menu a { display: block; padding: 0.75rem 1rem; border-radius: 0.375rem; }
+            .header-search-icon { display: none; } /* Hide search icon on mobile for simplicity */
         }
-        /* Show full nav on medium and larger screens, hide hamburger */
-        @media (min-width: 641px) {
+        @media (min-width: 769px) { /* Changed breakpoint */
             .hamburger-icon { display: none; }
-            .nav-full { display: flex !important; } /* Ensure full nav is always flex on larger screens */
-            .nav-menu { display: none; } /* Hide the mobile menu */
+            .nav-full { display: flex !important; }
+            .nav-menu { display: none; }
         }
-        /* Existing custom styles for About Us section background */
-        .about-us-section { background-image: url('https://placehold.co/1920x1080/e0e0e0/333333?text=Subtle+Background+Pattern'); background-size: cover; background-position: center; position: relative; z-index: 1; color: #333; }
-        .about-us-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.85); z-index: -1; border-radius: 0.5rem; }
 
-        /* Styles for the Product Detail Modal */
+        /* Hero Slider Styles */
+        .slider-container { position: relative; width: 100%; height: 500px; overflow: hidden; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1s ease-in-out; }
+        .slide.active { opacity: 1; }
+        .slider-text-overlay { position: absolute; inset: 0; background-color: rgba(0,0,0,0.4); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 2rem; }
+        .slider-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0,0,0,0.5); color: white; padding: 1rem 0.75rem; cursor: pointer; z-index: 10; border-radius: 0.5rem; transition: background-color 0.3s; }
+        .slider-nav-btn:hover { background-color: rgba(0,0,0,0.7); }
+        .slider-nav-prev { left: 1rem; }
+        .slider-nav-next { right: 1rem; }
+        .slider-dots { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.5rem; z-index: 10; }
+        .dot { width: 10px; height: 10px; background-color: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: background-color 0.3s; }
+        .dot.active { background-color: white; }
+
+        /* Product Detail Modal Styles (retained from previous version) */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; justify-content: center; align-items: center; }
         .modal-content { background-color: white; padding: 2rem; border-radius: 0.75rem; max-width: 90%; max-height: 90%; overflow-y: auto; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.3); transform: scale(0.9); opacity: 0; transition: all 0.3s ease-out; }
         .modal-overlay.active .modal-content { transform: scale(1); opacity: 1; }
@@ -61,60 +60,97 @@
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
 
-    <!-- Header Section: Navigation Bar -->
-    <header class="bg-blue-900 text-white p-4 shadow-lg">
+    <!-- Top Bar Header -->
+    <div class="top-bar py-2">
+        <div class="container mx-auto flex justify-between items-center px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-4">
+                <span>📞 9849666682 / 015326600</span>
+                <span>📧 gg.gallery07@gmail.com</span>
+            </div>
+            <div class="flex space-x-3">
+                <a href="#" class="hover:text-white transition-colors">FB</a>
+                <a href="#" class="hover:text-white transition-colors">IG</a>
+                <a href="#" class="hover:text-white transition-colors">TW</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="main-nav p-4 shadow-lg sticky-header">
         <nav class="container mx-auto flex flex-wrap justify-between items-center">
-            <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-800 transition-colors mb-2 sm:mb-0">GG Gallery</a>
+            <!-- Logo/Brand Name -->
+            <a href="#" class="text-3xl font-extrabold text-white rounded-lg p-2 hover:bg-blue-800 transition-colors mb-2 sm:mb-0">GG Gallery</a>
             
             <!-- Hamburger Icon for Mobile (JS controlled) -->
-            <button id="hamburger" class="hamburger-icon sm:hidden focus:outline-none" aria-label="Toggle navigation">
+            <button id="hamburger" class="hamburger-icon focus:outline-none" aria-label="Toggle navigation">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
             </button>
 
             <!-- Full Navigation Menu for Desktop -->
-            <ul class="flex space-x-4 nav-full hidden sm:flex">
-                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">About Us</a></li>
-                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Products & Services</a></li>
-                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Testimonials</a></li>
-                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Contact</a></li>
+            <ul class="flex space-x-4 nav-full">
+                <li><a href="#" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Home</a></li>
+                <li><a href="#about" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">About Us</a></li>
+                <li><a href="#categories" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Categories</a></li>
+                <li><a href="#products" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Products</a></li>
+                <li><a href="#brands" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Brands</a></li>
+                <li><a href="#contact" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Contact</a></li>
             </ul>
+
+            <!-- Search Icon (Desktop Only) -->
+            <div class="header-search-icon hidden sm:block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search text-white cursor-pointer hover:text-blue-200"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
 
             <!-- Mobile Navigation Menu (JS controlled, initially hidden) -->
             <ul id="mobile-menu" class="nav-menu hidden bg-blue-800 rounded-md mt-2 w-full">
-                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">About Us</a></li>
-                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Products & Services</a></li>
-                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Testimonials</a></li>
-                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Contact</a></li>
+                <li><a href="#" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#about" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">About Us</a></li>
+                <li><a href="#categories" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Categories</a></li>
+                <li><a href="#products" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Products</a></li>
+                <li><a href="#brands" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Brands</a></li>
+                <li><a href="#contact" class="text-white hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section - Redesigned for prominent text and attractive background -->
-    <section class="relative hero-background h-96 flex items-center justify-center text-white">
-        <div class="absolute inset-0 hero-overlay"></div>
-        <div class="z-10 text-center p-4">
-            <!-- New container for GG GALLERY and Location -->
-            <div class="hero-text-box animate-fade-in">
-                <h1>GG GALLERY</h1>
-                <p>Mahaboudha, Kathmandu, Nepal</p>
+    <!-- Hero Section - Image Slider -->
+    <section class="slider-container">
+        <div class="slide active" style="background-image: url('https://placehold.co/1920x500/0000FF/FFFFFF?text=Modern+Electronics+Collection');">
+            <div class="slider-text-overlay">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Your Trusted Partner for Electronics</h2>
+                <p class="text-lg md:text-xl mb-8 animate-fade-in" style="animation-delay: 0.5s;">Wholesale & Retail Solutions for Every Need</p>
+                <a href="#products" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105" style="animation-delay: 1s;">Explore Products</a>
             </div>
-            <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 mt-8 inline-block" style="animation-delay: 1s;">Visit Our Store</a>
         </div>
+        <div class="slide" style="background-image: url('https://placehold.co/1920x500/008080/FFFFFF?text=Quality+Home+Appliances');">
+            <div class="slider-text-overlay">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Quality Home Appliances for Smart Living</h2>
+                <p class="text-lg md:text-xl mb-8 animate-fade-in" style="animation-delay: 0.5s;">Reliable, Efficient, and Innovative</p>
+                <a href="#categories" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105" style="animation-delay: 1s;">Shop Categories</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('https://placehold.co/1920x500/4682B4/FFFFFF?text=Wholesale+Deals');">
+            <div class="slider-text-overlay">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">Unbeatable Wholesale Deals</h2>
+                <p class="text-lg md:text-xl mb-8 animate-fade-in" style="animation-delay: 0.5s;">Partner with GG Gallery for Your Business Needs</p>
+                <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105" style="animation-delay: 1s;">Contact for Bulk Orders</a>
+            </div>
+        </div>
+
+        <button class="slider-nav-btn slider-nav-prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="slider-nav-btn slider-nav-next" onclick="changeSlide(1)">&#10095;</button>
+        <div class="slider-dots" id="slider-dots-container"></div>
     </section>
 
     <!-- Main Content Section -->
     <main class="flex-grow">
-        <!-- About Us Section - Now with a background image and overlay -->
-        <section id="about" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-md mt-8 about-us-section">
-            <div class="about-us-overlay"></div>
-            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8 relative z-10">About GG Gallery</h2>
-            <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+        <!-- About Us Section (Re-integrated) -->
+        <section id="about" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-md mt-8">
+            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">About GG Gallery</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
                 <div class="md:w-1/2">
-                    <!-- About Us image source corrected to gg.gallerylogo.png with onerror fallback -->
                     <img src="gg.gallerylogo.png" alt="GG Gallery Store Interior" class="rounded-lg shadow-lg max-w-full h-auto" onerror="this.onerror=null;this.src='https://placehold.co/600x400/a78bfa/ffffff?text=Image+Not+Found';">
                 </div>
                 <div class="md:w-1/2 text-lg text-gray-700 leading-relaxed">
@@ -125,78 +161,132 @@
             </div>
         </section>
 
-        <!-- Services Section (Renamed to Products & Services) -->
-        <section id="services" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">Explore Our Electronics Collection</h2>
-            <p class="text-lg text-center text-gray-700 mb-10 max-w-3xl mx-auto">At GG Gallery, we bring you a diverse range of high-quality electronics, from cutting-edge entertainment systems to essential home appliances. Discover products that enhance your lifestyle and empower your business.</p>
+        <!-- Product Categories Section -->
+        <section id="categories" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">Shop by Category</h2>
+            <p class="text-lg text-center text-gray-700 mb-10 max-w-3xl mx-auto">Explore our wide range of electronic products categorized for your convenience. Click to view more details and discover the perfect fit for your needs.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service Item 1: Home Entertainment -->
+                <!-- Category Item 1: Televisions -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tv text-cyan-600 mb-4 mx-auto"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Immersive Home Entertainment</h3>
-                    <p class="text-gray-700">Dive into a world of vibrant visuals and rich audio with our premium **televisions, state-of-the-art home theater systems, and high-definition projectors**. Perfect for every movie night or presentation.</p>
+                    <img src="https://placehold.co/200x150/ADD8E6/000000?text=Televisions" alt="Televisions" class="mx-auto mb-4 rounded-md">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Televisions</h3>
+                    <p class="text-gray-700">Experience stunning visuals with our range of Smart TVs, 4K, and 8K displays from top brands.</p>
                     <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('home-entertainment')">View Details</button>
                 </div>
-                <!-- Service Item 2: Home Appliances -->
+                <!-- Category Item 2: Home Appliances -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-washing-machine text-cyan-600 mb-4 mx-auto"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M12 18V8"/><path d="M16 18V8"/><path d="M8 18V8"/><path d="M17 18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10Z"/><circle cx="12" cy="13" r="3"/></svg>
-                    <h3 class="text-2xl font-semibold text-green-800 mb-2">Reliable Home Essentials</h3>
-                    <p class="text-gray-700">Simplify your daily life with our durable and energy-efficient **washing machines and modern refrigerators**. Designed for convenience and long-lasting performance.</p>
+                    <img src="https://placehold.co/200x150/87CEEB/000000?text=Home+Appliances" alt="Home Appliances" class="mx-auto mb-4 rounded-md">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Home Appliances</h3>
+                    <p class="text-gray-700">Modernize your home with our efficient washing machines, refrigerators, and kitchen appliances.</p>
                     <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('home-appliances')">View Details</button>
                 </div>
-                <!-- Service Item 3: Audio & Accessories -->
+                <!-- Category Item 3: Audio Systems -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-speaker text-cyan-600 mb-4 mx-auto"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M12 14V8"/><path d="M12 18a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
-                    <h3 class="text-2xl font-semibold text-purple-800 mb-2">Dynamic Audio & Mounting</h3>
-                    <p class="text-gray-700">Experience powerful sound on the go with our versatile **trolley speakers**, and achieve the perfect viewing angle with our robust **TV mounts**.</p>
+                    <img src="https://placehold.co/200x150/4682B4/000000?text=Audio+Systems" alt="Audio Systems" class="mx-auto mb-4 rounded-md">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Audio Systems</h3>
+                    <p class="text-gray-700">Immerse yourself in rich sound with our home theater systems, soundbars, and portable speakers.</p>
                     <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('audio-mounting')">View Details</button>
                 </div>
-            </div>
-            <div class="text-center mt-12">
-                <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">Inquire About Products</a>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="bg-blue-50 py-12 px-4 sm:px-6 lg:px-8 rounded-lg shadow-md">
-            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">What Our Clients Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Testimonial: Radhe Shyam Electronics -->
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <p class="text-lg text-gray-700 italic mb-4">"GG Gallery has been our reliable partner for wholesale electronics. Their quality and service are consistently excellent."</p>
-                    <p class="font-semibold text-gray-800">- Radhe Shyam Electronics, Bhaktapur</p>
+                <!-- Category Item 4: Projectors & Accessories -->
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
+                    <img src="https://placehold.co/200x150/6A5ACD/000000?text=Projectors" alt="Projectors" class="mx-auto mb-4 rounded-md">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Projectors & Accessories</h3>
+                    <p class="text-gray-700">High-definition projectors for home and office, plus essential mounting accessories.</p>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('home-entertainment')">View Details</button>
                 </div>
-                <!-- New Testimonial: Hari Khanal -->
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <p class="text-lg text-gray-700 italic mb-4">"The range of products and the competitive pricing at GG Gallery are unmatched. A truly dependable supplier!"</p>
-                    <p class="font-semibold text-gray-800">- Hari Khanal, Chitwan</p>
+                <!-- Category Item 5: TV Mounts -->
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
+                    <img src="https://placehold.co/200x150/9370DB/000000?text=TV+Mounts" alt="TV Mounts" class="mx-auto mb-4 rounded-md">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">TV Mounts</h3>
+                    <p class="text-gray-700">Secure and versatile TV mounts for perfect viewing angles in any room.</p>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('audio-mounting')">View Details</button>
                 </div>
-                <!-- New Testimonial: Shyam Shrestha -->
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <p class="text-lg text-gray-700 italic mb-4">"Excellent customer support and timely delivery. GG Gallery makes sourcing electronics easy and reliable."</p>
-                    <p class="font-semibold text-gray-800">- Shyam Shrestha, Gorkha</p>
+                <!-- Category Item 6: Other Electronics -->
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
+                    <img src="https://placehold.co/200x150/B0E0E6/000000?text=Other+Electronics" alt="Other Electronics" class="mx-auto mb-4 rounded-md">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Other Electronics</h3>
+                    <p class="text-gray-700">Explore our diverse range of other electronic gadgets and accessories.</p>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('home-entertainment')">View Details</button>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Us Section -->
+        <!-- Featured Products Section (Simplified) -->
+        <section id="products" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-blue-50 rounded-lg shadow-md">
+            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">Featured Products</h2>
+            <p class="text-lg text-center text-gray-700 mb-10 max-w-3xl mx-auto">Discover our top-selling and newly arrived electronics. Quality and innovation at your fingertips.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200">
+                    <img src="https://placehold.co/400x300/F0F8FF/000000?text=Smart+TV" alt="Smart TV" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg text-blue-800 mb-1">Ultra HD Smart TV</h3>
+                        <p class="text-gray-600 text-sm mb-2">Stunning visuals, seamless streaming.</p>
+                        <p class="font-bold text-xl text-cyan-700">NPR 75,000</p>
+                        <button class="mt-3 w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 rounded-md transition-colors duration-200">View Product</button>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200">
+                    <img src="https://placehold.co/400x300/F0FFF0/000000?text=Washing+Machine" alt="Washing Machine" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg text-blue-800 mb-1">Automatic Washing Machine</h3>
+                        <p class="text-gray-600 text-sm mb-2">Efficient cleaning, gentle on fabrics.</p>
+                        <p class="font-bold text-xl text-cyan-700">NPR 45,000</p>
+                        <button class="mt-3 w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 rounded-md transition-colors duration-200">View Product</button>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200">
+                    <img src="https://placehold.co/400x300/FFF0F5/000000?text=Home+Theater" alt="Home Theater System" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg text-blue-800 mb-1">5.1 Channel Home Theater</h3>
+                        <p class="text-gray-600 text-sm mb-2">Cinematic sound experience at home.</p>
+                        <p class="font-bold text-xl text-cyan-700">NPR 30,000</p>
+                        <button class="mt-3 w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 rounded-md transition-colors duration-200">View Product</button>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-200">
+                    <img src="https://placehold.co/400x300/F5FFFA/000000?text=Refrigerator" alt="Refrigerator" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg text-blue-800 mb-1">Double Door Refrigerator</h3>
+                        <p class="text-gray-600 text-sm mb-2">Spacious, energy-efficient cooling.</p>
+                        <p class="font-bold text-xl text-cyan-700">NPR 60,000</p>
+                        <button class="mt-3 w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 rounded-md transition-colors duration-200">View Product</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands Section -->
+        <section id="brands" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">Our Trusted Brands</h2>
+            <p class="text-lg text-center text-gray-700 mb-10 max-w-3xl mx-auto">We partner with leading global brands to bring you the best quality and innovation in electronics.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
+                <img src="https://placehold.co/150x80/E0E0E0/333333?text=Brand+A" alt="Brand Logo A" class="max-w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E0E0E0/333333?text=Brand+B" alt="Brand Logo B" class="max-w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E0E0E0/333333?text=Brand+C" alt="Brand Logo C" class="max-w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E0E0E0/333333?text=Brand+D" alt="Brand Logo D" class="max-w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E0E0E0/333333?text=Brand+E" alt="Brand Logo E" class="max-w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+                <img src="https://placehold.co/150x80/E0E0E0/333333?text=Brand+F" alt="Brand Logo F" class="max-w-full h-auto opacity-75 hover:opacity-100 transition-opacity duration-200">
+            </div>
+        </section>
+
+        <!-- Contact Us Section (Existing) -->
         <section id="contact" class="container mx-auto py-12 px-4 sm:px-6 lg:px-8 bg-white rounded-lg shadow-md mt-8 mb-8">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-8">Contact Us</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Contact Information -->
                 <div class="space-y-4 text-lg text-gray-700">
                     <p><strong class="text-blue-800">Address:</strong> Mahaboudha, Kathmandu, Nepal</p>
                     <p><strong class="text-blue-800">Phone:</strong> <a href="tel:+9779849666682" class="text-blue-600 hover:underline">9849666682 / 015326600</a></p>
                     <p><strong class="text-blue-800">Email:</strong> <a href="mailto:gg.gallery07@gmail.com" class="text-blue-600 hover:underline">gg.gallery07@gmail.com</a></p>
                     <p><strong class="text-blue-800">Business Hours:</strong> Sun - Fri: 11:00 AM - 7:00 PM</p>
-                    <!-- Google Map embed for GG Gallery, Mahaboudha, Kathmandu -->
                     <div class="mt-6">
                         <h3 class="text-xl font-semibold text-blue-800 mb-2">Find Us on the Map:</h3>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3532.384648511212!2d85.3104176!3d27.7054077!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190050235c6b%3A0xb9a468b1799661ef!2sGG%20Gallery!5e0!3m2!1sen!2snp!4v1752893766821!5m2!1sen!2snp" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg shadow-md"></iframe>
                     </div>
                 </div>
-
-                <!-- Contact Form -->
                 <div>
                     <h3 class="text-xl font-semibold text-blue-800 mb-4">Send Us a Message:</h3>
                     <form class="space-y-4">
@@ -221,15 +311,43 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-gray-900 text-white p-6 text-center shadow-inner mt-auto">
-        <div class="container mx-auto">
-            <p>&copy; 2025 GG Gallery. All rights reserved.</p>
-            <p class="text-sm mt-2">Designed and Hosted with ❤️ on GitHub Pages.</p>
-            <div class="flex justify-center space-x-4 mt-4">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
-                <a href="#" class="text-400 hover:text-white transition-colors">Instagram</a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Us in Footer -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">About GG Gallery</h3>
+                <p class="text-gray-400 text-sm">GG Gallery has been a leading electronic wholesale and retail supplier in Mahaboudha, Kathmandu since the early 2000s. We are dedicated to providing high-quality products and ensuring unparalleled customer satisfaction.</p>
             </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#categories" class="hover:text-white transition-colors">Categories</a></li>
+                    <li><a href="#products" class="hover:text-white transition-colors">Featured Products</a></li>
+                    <li><a href="#brands" class="hover:text-white transition-colors">Our Brands</a></li>
+                    <li><a href="#contact" class="hover:text-white transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                <address class="space-y-2 text-gray-400 text-sm not-italic">
+                    <p>📍 Mahaboudha, Kathmandu, Nepal</p>
+                    <p>📞 <a href="tel:+9779849666682" class="hover:text-white transition-colors">9849666682 / 015326600</a></p>
+                    <p>📧 <a href="mailto:gg.gallery07@gmail.com" class="hover:text-white transition-colors">gg.gallery07@gmail.com</a></p>
+                    <p>🕒 Sun - Fri: 11:00 AM - 7:00 PM</p>
+                </address>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">FB</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">IG</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-8 border-t border-gray-700 pt-4">
+            <p>&copy; 2025 GG Gallery. All rights reserved.</p>
         </div>
     </footer>
 
@@ -245,27 +363,86 @@
     </div>
 
     <script>
-        // JavaScript to toggle the mobile navigation menu
+        // --- Hamburger Menu Logic ---
         function toggleMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden'); // Toggles the 'hidden' class
-            mobileMenu.classList.toggle('active'); // Toggles the 'active' class for styling if needed
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('active');
         }
-
-        // Add event listener to the hamburger icon
         document.getElementById('hamburger').addEventListener('click', toggleMenu);
-
-        // Close mobile menu when a link is clicked (optional, but good UX)
         document.querySelectorAll('#mobile-menu a').forEach(item => {
             item.addEventListener('click', () => {
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (mobileMenu.classList.contains('active')) {
-                    toggleMenu(); // Close the menu if it's open
+                    toggleMenu();
                 }
             });
         });
 
-        // Product data for the modal
+        // --- Image Slider Logic ---
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('slider-dots-container');
+        let slideInterval; // To store the interval for auto-play
+
+        // Create dots for the slider
+        function createDots() {
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => currentSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        // Show a specific slide
+        function showSlides(n) {
+            const dots = document.querySelectorAll('.dot');
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+
+        // Change slide by a given number (next/prev)
+        function changeSlide(n) {
+            slideIndex += n;
+            showSlides(slideIndex);
+            resetAutoPlay();
+        }
+
+        // Go to a specific slide (from dots)
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlides(slideIndex);
+            resetAutoPlay();
+        }
+
+        // Auto-play functionality
+        function startAutoPlay() {
+            slideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        function resetAutoPlay() {
+            clearInterval(slideInterval);
+            startAutoPlay();
+        }
+
+        // Initialize slider on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            createDots();
+            showSlides(slideIndex);
+            startAutoPlay();
+        });
+
+        // --- Product Detail Modal Logic (retained) ---
         const productDetails = {
             'home-entertainment': {
                 title: 'Immersive Home Entertainment Solutions',
@@ -308,7 +485,6 @@
             }
         };
 
-        // Function to open the product modal
         function openProductModal(productType) {
             const modalOverlay = document.getElementById('product-modal-overlay');
             const modalTitle = document.getElementById('modal-product-title');
@@ -322,33 +498,25 @@
                 modalTitle.textContent = details.title;
                 modalDescription.textContent = details.description;
                 modalCta.textContent = details.cta;
-
-                // Clear previous features
                 modalFeatures.innerHTML = '';
                 details.features.forEach(feature => {
                     const li = document.createElement('li');
                     li.textContent = feature;
                     modalFeatures.appendChild(li);
                 });
-
-                modalOverlay.classList.add('active'); // Show modal and trigger transition
-                modalOverlay.style.display = 'flex'; // Ensure it's displayed
+                modalOverlay.classList.add('active');
+                modalOverlay.style.display = 'flex';
             }
         }
 
-        // Function to close the product modal
         function closeProductModal() {
             const modalOverlay = document.getElementById('product-modal-overlay');
-            modalOverlay.classList.remove('active'); // Hide modal and trigger transition
-            // Set display to none after transition completes for accessibility
-            setTimeout(() => {
-                modalOverlay.style.display = 'none';
-            }, 300); // Match CSS transition duration
+            modalOverlay.classList.remove('active');
+            setTimeout(() => { modalOverlay.style.display = 'none'; }, 300);
         }
 
-        // Close modal if clicking outside the content (on the overlay)
         document.getElementById('product-modal-overlay').addEventListener('click', function(event) {
-            if (event.target === this) { // Only close if the click is directly on the overlay
+            if (event.target === this) {
                 closeProductModal();
             }
         });
