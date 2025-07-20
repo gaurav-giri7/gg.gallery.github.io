@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom font for a modern look */
-        body { font-family: 'Inter', sans-serif; background-image: url('https://placehold.co/1920x1080/f5f5f5/transparent'); background-size: cover; background-attachment: fixed; background-color: #f5f5f5; color: #333; }
+        body { font-family: 'Inter', sans-serif; background-image: url('https://placehold.co/1920x1080/f5f5f5/transparent'); background-size: cover; background-attachment: fixed; background-color: #f5f5f5; color: #333; scroll-behavior: smooth; /* Smooth scrolling for anchor links */ }
         /* Custom animation for hero text */
         @keyframes slideInFromLeft { 0% { transform: translateX(-100%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
         @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
@@ -26,30 +26,75 @@
         @media (max-width: 768px) { .hero-text-box h1 { font-size: 2.8rem; letter-spacing: 0.05em; } .hero-text-box p { font-size: 1.2rem; } }
         @media (max-width: 480px) { .hero-text-box h1 { font-size: 2rem; } .hero-text-box p { font-size: 1rem; } }
 
-        /* Styles for the hamburger icon */
-        .hamburger-icon { display: none; cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
+        /* Responsive Navigation - Pure CSS */
+        .nav-full { display: flex; } /* Default for larger screens */
+        .nav-mobile { display: none; flex-direction: column; width: 100%; text-align: center; }
+        .nav-mobile a { display: block; padding: 0.75rem 1rem; border-radius: 0.375rem; }
+        .hamburger-icon { display: none; /* Hidden by default */ cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
         .hamburger-icon div { width: 100%; height: 3px; background-color: white; border-radius: 2px; transition: all 0.3s ease-in-out; }
 
-        /* Styles for the responsive navigation menu */
-        .nav-menu { display: none; flex-direction: column; width: 100%; text-align: center; }
-        .nav-menu.active { display: flex; }
-        .nav-menu li { margin: 0.5rem 0; }
-
-        /* Show hamburger on small screens, hide nav menu */
         @media (max-width: 640px) {
-            .hamburger-icon { display: flex; }
             .nav-full { display: none; } /* Hide full nav on small screens */
-            .nav-menu a { display: block; padding: 0.75rem 1rem; border-radius: 0.375rem; } /* Add padding for touch targets */
+            .hamburger-icon { display: flex; } /* Show hamburger */
+            /* This is a simple stack for mobile, no JS toggle */
+            .nav-mobile { display: flex; } /* Always show mobile menu on small screens, stacked */
         }
-        /* Show full nav on medium and larger screens, hide hamburger */
+        /* Hide the mobile menu on larger screens */
         @media (min-width: 641px) {
-            .hamburger-icon { display: none; }
-            .nav-full { display: flex !important; } /* Ensure full nav is always flex on larger screens */
-            .nav-menu { display: none; } /* Hide the mobile menu */
+            .nav-mobile { display: none !important; }
         }
+
         /* Existing custom styles for About Us section background */
         .about-us-section { background-image: url('https://placehold.co/1920x1080/e0e0e0/333333?text=Subtle+Background+Pattern'); background-size: cover; background-position: center; position: relative; z-index: 1; color: #333; }
         .about-us-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255, 255, 255, 0.85); z-index: -1; border-radius: 0.5rem; }
+
+        /* Styles for the Product Detail Sections (Pure HTML/CSS "Modal" effect) */
+        .product-detail-section {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto; /* Enable scrolling for long content */
+            padding: 2rem 1rem; /* Padding for mobile */
+            box-sizing: border-box; /* Include padding in width/height */
+        }
+        .product-detail-section:target {
+            display: flex; /* Show when targeted by URL hash */
+        }
+        .product-detail-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            max-width: 800px; /* Max width for content */
+            width: 90%; /* Responsive width */
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease-out forwards;
+        }
+        .product-detail-content .close-button {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            text-decoration: none; /* Remove underline from link */
+        }
+        .product-detail-content .close-button:hover {
+            color: #333;
+        }
+        @keyframes modalFadeIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
@@ -58,24 +103,31 @@
     <header class="bg-blue-900 text-white p-4 shadow-lg">
         <nav class="container mx-auto flex flex-wrap justify-between items-center">
             <a href="#" class="text-3xl font-extrabold rounded-lg p-2 hover:bg-blue-800 transition-colors mb-2 sm:mb-0">GG Gallery</a>
-            <button id="hamburger" class="hamburger-icon sm:hidden focus:outline-none">
+            
+            <!-- Hamburger Icon (Pure CSS - No JS toggle) -->
+            <a href="#mobile-nav-menu" class="hamburger-icon sm:hidden" aria-label="Toggle navigation">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
-            </button>
-            <ul class="flex space-x-4 nav-full hidden sm:flex">
+            </a>
+
+            <!-- Full Navigation Menu for Desktop -->
+            <ul class="flex space-x-4 nav-full">
                 <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Home</a></li>
                 <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">About Us</a></li>
                 <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Products & Services</a></li>
                 <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Testimonials</a></li>
                 <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-800">Contact</a></li>
             </ul>
-            <ul id="mobile-menu" class="nav-menu hidden bg-blue-800 rounded-md mt-2 w-full">
-                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">About Us</a></li>
-                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Products & Services</a></li>
-                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Testimonials</a></li>
-                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block" onclick="toggleMenu()">Contact</a></li>
+
+            <!-- Mobile Navigation Menu (Pure CSS - hidden by default, shown by :target) -->
+            <ul id="mobile-nav-menu" class="nav-mobile bg-blue-800 rounded-md mt-2">
+                <li><a href="#" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block">About Us</a></li>
+                <li><a href="#services" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block">Products & Services</a></li>
+                <li><a href="#testimonials" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block">Testimonials</a></li>
+                <li><a href="#contact" class="hover:text-blue-200 transition-colors rounded-md p-2 hover:bg-blue-700 block">Contact</a></li>
+                <li><a href="#" class="text-white text-sm mt-4 block">Close Menu</a></li> <!-- Close link for mobile menu -->
             </ul>
         </nav>
     </header>
@@ -122,18 +174,21 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tv text-cyan-600 mb-4 mx-auto"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">Immersive Home Entertainment</h3>
                     <p class="text-gray-700">Dive into a world of vibrant visuals and rich audio with our premium **televisions, state-of-the-art home theater systems, and high-definition projectors**. Perfect for every movie night or presentation.</p>
+                    <a href="#product-home-entertainment" class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200 inline-block">View Details</a>
                 </div>
                 <!-- Service Item 2: Home Appliances -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-washing-machine text-cyan-600 mb-4 mx-auto"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M12 18V8"/><path d="M16 18V8"/><path d="M8 18V8"/><path d="M17 18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10Z"/><circle cx="12" cy="13" r="3"/></svg>
                     <h3 class="text-2xl font-semibold text-green-800 mb-2">Reliable Home Essentials</h3>
                     <p class="text-gray-700">Simplify your daily life with our durable and energy-efficient **washing machines and modern refrigerators**. Designed for convenience and long-lasting performance.</p>
+                    <a href="#product-home-appliances" class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200 inline-block">View Details</a>
                 </div>
                 <!-- Service Item 3: Audio & Accessories -->
                 <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-200 border-t-4 border-cyan-500">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-speaker text-cyan-600 mb-4 mx-auto"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M12 14V8"/><path d="M12 18a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
                     <h3 class="text-2xl font-semibold text-purple-800 mb-2">Dynamic Audio & Mounting</h3>
                     <p class="text-gray-700">Experience powerful sound on the go with our versatile **trolley speakers**, and achieve the perfect viewing angle with our robust **TV mounts**.</p>
+                    <a href="#product-audio-mounting" class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200 inline-block">View Details</a>
                 </div>
             </div>
             <div class="text-center mt-12">
@@ -217,26 +272,60 @@
         </div>
     </footer>
 
-    <script>
-        // JavaScript to toggle the mobile navigation menu
-        function toggleMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden'); // Toggles the 'hidden' class
-            mobileMenu.classList.toggle('active'); // Toggles the 'active' class for styling if needed
-        }
+    <!-- Product Detail Sections (Pure HTML/CSS "Modals") -->
+    <div id="product-home-entertainment" class="product-detail-section">
+        <div class="product-detail-content">
+            <a href="#services" class="close-button">&times;</a>
+            <h3 class="text-3xl font-bold text-blue-700 mb-4">Immersive Home Entertainment Solutions</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">Transform your living room into a cinematic experience with our cutting-edge home entertainment systems. We offer a wide range of televisions, home theater setups, and high-definition projectors designed for stunning visuals and crystal-clear audio.</p>
+            <h4 class="text-xl font-semibold text-blue-800 mb-2">Key Features:</h4>
+            <ul class="list-disc list-inside text-gray-700 mb-4">
+                <li>Latest 4K and 8K Smart TVs with vibrant displays and smart features.</li>
+                <li>Powerful home theater systems with multi-channel surround sound.</li>
+                <li>High-brightness projectors for large screen viewing in any lighting.</li>
+                <li>Seamless integration with smart home devices for ultimate convenience.</li>
+                <li>Energy-efficient models available to save on power consumption.</li>
+                <li>Expert installation and setup services for optimal performance.</li>
+            </ul>
+            <p class="text-lg text-gray-800 font-semibold">Contact us for a personalized home entertainment consultation!</p>
+        </div>
+    </div>
 
-        // Add event listener to the hamburger icon
-        document.getElementById('hamburger').addEventListener('click', toggleMenu);
+    <div id="product-home-appliances" class="product-detail-section">
+        <div class="product-detail-content">
+            <a href="#services" class="close-button">&times;</a>
+            <h3 class="text-3xl font-bold text-blue-700 mb-4">Reliable Home Essentials for Modern Living</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">Simplify your daily chores with our selection of durable and energy-efficient home appliances. From washing machines that handle any load to refrigerators that keep your food fresh, our products are built for convenience and long-lasting performance.</p>
+            <h4 class="text-xl font-semibold text-blue-800 mb-2">Key Features:</h4>
+            <ul class="list-disc list-inside text-gray-700 mb-4">
+                <li>Advanced washing machines with various wash cycles (e.g., quick wash, delicate, heavy duty).</li>
+                <li>Spacious and energy-saving refrigerators with smart cooling technology.</li>
+                <li>Smart features for remote control and monitoring via mobile apps.</li>
+                <li>Durable construction with high-quality materials for years of reliable use.</li>
+                <li>Variety of sizes and styles to fit any home and kitchen aesthetic.</li>
+                <li>Warranty and after-sales support for peace of mind.</li>
+            </ul>
+            <p class="text-lg text-gray-800 font-semibold">Inquire about our latest home appliance models and special offers!</p>
+        </div>
+    </div>
 
-        // Close mobile menu when a link is clicked (optional, but good UX)
-        document.querySelectorAll('#mobile-menu a').forEach(item => {
-            item.addEventListener('click', () => {
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu.classList.contains('active')) {
-                    toggleMenu(); // Close the menu if it's open
-                }
-            });
-        });
-    </script>
+    <div id="product-audio-mounting" class="product-detail-section">
+        <div class="product-detail-content">
+            <a href="#services" class="close-button">&times;</a>
+            <h3 class="text-3xl font-bold text-blue-700 mb-4">Dynamic Audio & Secure Mounting Solutions</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">Enhance your audio experience and optimize your viewing space with our range of sound systems and mounting solutions. Whether you need powerful portable audio for events or a secure way to mount your TV for optimal viewing, we have the perfect accessories.</p>
+            <h4 class="text-xl font-semibold text-blue-800 mb-2">Key Features:</h4>
+            <ul class="list-disc list-inside text-gray-700 mb-4">
+                <li>High-fidelity trolley speakers with long battery life and powerful bass.</li>
+                <li>Robust and adjustable TV mounts for optimal viewing angles and safety.</li>
+                <li>Soundbars and integrated audio systems for enhanced home audio.</li>
+                <li>Professional installation services available for all mounting solutions.</li>
+                <li>Durable materials for maximum safety, stability, and longevity.</li>
+                <li>Compatibility with various TV sizes and audio devices.</li>
+            </ul>
+            <p class="text-lg text-gray-800 font-semibold">Discover the perfect audio and mounting solution for your needs today!</p>
+        </div>
+    </div>
+
 </body>
 </html>
