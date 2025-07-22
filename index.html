@@ -11,8 +11,9 @@
         /* Custom animations */
         @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
         .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         .animate-slide-in-up { animation: slideInUp 0.8s ease-out forwards; }
+        @keyframes spinner { to { transform: rotate(360deg); } } /* Keeping spinner for potential future use */
 
         /* Header Specific Styles */
         .top-bar { background-color: #1e293b; /* Darker slate */ color: #cbd5e0; font-size: 0.875rem; }
@@ -43,10 +44,17 @@
         }
 
         /* Hero Slider Styles */
-        .slider-container { position: relative; width: 100%; height: 550px; /* Slightly taller */ overflow: hidden; }
+        .slider-container { position: relative; width: 100%; height: 550px; overflow: hidden; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1s ease-in-out; }
         .slide.active { opacity: 1; }
-        .slider-text-overlay { position: absolute; inset: 0; background-color: rgba(0,0,0,0.5); /* Slightly darker overlay */ display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 2rem; }
+        /* Parallax effect for hero background */
+        .slide[style*="background-image"] {
+            background-attachment: fixed; /* Key for parallax */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .slider-text-overlay { position: absolute; inset: 0; background-color: rgba(0,0,0,0.5); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 2rem; }
         .slider-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0,0,0,0.6); color: white; padding: 1rem 0.75rem; cursor: pointer; z-index: 10; border-radius: 0.75rem; transition: background-color 0.3s, transform 0.2s; }
         .slider-nav-btn:hover { background-color: rgba(0,0,0,0.8); transform: translateY(-50%) scale(1.1); }
         .slider-nav-prev { left: 1.5rem; }
@@ -54,41 +62,48 @@
         .slider-dots { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.75rem; z-index: 10; }
         .dot { width: 12px; height: 12px; background-color: rgba(255,255,255,0.6); border-radius: 50%; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
         .dot.active { background-color: white; transform: scale(1.2); }
-        .hero-button { background-color: #06b6d4; /* Cyan 500 */ }
-        .hero-button:hover { background-color: #0891b2; /* Cyan 600 */ }
+        .hero-button { background-color: #06b6d4; /* Cyan 500 */ transition: all 0.3s ease-out; }
+        .hero-button:hover { background-color: #0891b2; /* Cyan 600 */ transform: scale(1.05) translateY(-3px); box-shadow: 0 8px 15px rgba(0, 182, 212, 0.4); }
 
         /* General Card Styles */
         .card {
             background-color: white;
-            border-radius: 1rem; /* More rounded */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Stronger shadow */
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             padding: 2rem;
             text-align: center;
             transform: translateY(0);
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-            border-top: 5px solid #06b6d4; /* Cyan border top */
+            border-top: 5px solid #06b6d4;
         }
         .card:hover {
-            transform: translateY(-8px); /* Lift effect */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* More pronounced shadow on hover */
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
         /* Product Card Specific */
         .product-card {
-            border-top: none; /* Remove top border for product cards */
+            border-top: none;
             overflow: hidden;
         }
         .product-card:hover {
-            transform: scale(1.03); /* Slightly larger scale for products */
+            transform: scale(1.03);
         }
         .product-card img {
-            border-radius: 0.75rem 0.75rem 0 0; /* Rounded top corners for image */
+            border-radius: 0.75rem 0.75rem 0 0;
+        }
+        .product-card button {
+            transition: all 0.3s ease-out;
+        }
+        .product-card button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 182, 212, 0.3);
         }
 
         /* Modal Styles */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease-out; }
         .modal-overlay.active { opacity: 1; }
-        .modal-content { background-color: white; padding: 2.5rem; border-radius: 1rem; max-width: 90%; max-height: 90%; overflow-y: auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.4); transform: scale(0.8); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Springy effect */ }
+        .modal-content { background-color: white; padding: 2.5rem; border-radius: 1rem; max-width: 90%; max-height: 90%; overflow-y: auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.4); transform: scale(0.8); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
         .modal-overlay.active .modal-content { transform: scale(1); opacity: 1; }
         .modal-close-button { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: #666; transition: color 0.2s; }
         .modal-close-button:hover { color: #333; transform: rotate(90deg); }
@@ -110,21 +125,32 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
         .brand-logo-container img {
-            filter: grayscale(80%); /* Subtle grayscale */
+            filter: grayscale(80%);
             transition: filter 0.3s ease-out;
-            max-width: 100%; /* Ensure images scale */
+            max-width: 100%;
             height: auto;
         }
         .brand-logo-container:hover img {
-            filter: grayscale(0%); /* Full color on hover */
+            filter: grayscale(0%);
         }
         .main-dealer-tag {
             font-size: 0.75rem;
-            color: #475569; /* Slate 600 */
+            color: #475569;
             font-weight: 600;
             margin-top: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -218,7 +244,7 @@
     <!-- Main Content Section -->
     <main class="flex-grow">
         <!-- About Us Section -->
-        <section id="about" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-xl mt-12 animate-slide-in-up">
+        <section id="about" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-xl mt-12 scroll-reveal">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-10">About GG Gallery</h2>
             <div class="flex flex-col md:flex-row items-center gap-10">
                 <div class="md:w-1/2">
@@ -231,7 +257,7 @@
         </section>
 
         <!-- Product Categories Section -->
-        <section id="categories" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <section id="categories" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 scroll-reveal">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-10">Shop by Category</h2>
             <p class="text-lg text-center text-gray-700 mb-12 max-w-3xl mx-auto">Explore our wide range of electronic products categorized for your convenience. Click to view more details and discover the perfect fit for your needs.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -240,48 +266,48 @@
                     <img src="https://placehold.co/200x150/ADD8E6/000000?text=Televisions" alt="Televisions" class="mx-auto mb-4 rounded-md">
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">Televisions</h3>
                     <p class="text-gray-700 text-sm">Smart TVs, 4K, and 8K displays.</p>
-                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('home-entertainment')">View Details</button>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">View Details</button>
                 </div>
                 <!-- Category Item 2: Home Appliances -->
                 <div class="card">
                     <img src="https://placehold.co/200x150/87CEEB/000000?text=Home+Appliances" alt="Home Appliances" class="mx-auto mb-4 rounded-md">
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">Home Appliances</h3>
                     <p class="text-gray-700 text-sm">Washing machines, refrigerators, kitchen appliances.</p>
-                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('home-appliances')">View Details</button>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">View Details</button>
                 </div>
                 <!-- Category Item 3: Audio Systems -->
                 <div class="card">
                     <img src="https://placehold.co/200x150/4682B4/000000?text=Audio+Systems" alt="Audio Systems" class="mx-auto mb-4 rounded-md">
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">Audio Systems</h3>
                     <p class="text-gray-700 text-sm">Home theater systems, portable speakers.</p>
-                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('audio-mounting')">View Details</button>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">View Details</button>
                 </div>
                 <!-- Category Item 4: Projectors & Accessories -->
                 <div class="card">
                     <img src="https://placehold.co/200x150/6A5ACD/000000?text=Projectors" alt="Projectors" class="mx-auto mb-4 rounded-md">
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">Projectors & Accessories</h3>
                     <p class="text-gray-700 text-sm">HD projectors for home and office.</p>
-                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('home-entertainment')">View Details</button>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">View Details</button>
                 </div>
                 <!-- Category Item 5: TV Mounts -->
                 <div class="card">
                     <img src="https://placehold.co/200x150/9370DB/000000?text=TV+Mounts" alt="TV Mounts" class="mx-auto mb-4 rounded-md">
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">TV Mounts</h3>
                     <p class="text-gray-700 text-sm">Secure, versatile mounts for perfect viewing.</p>
-                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('audio-mounting')">View Details</button>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">View Details</button>
                 </div>
                 <!-- Category Item 6: Other Electronics -->
                 <div class="card">
                     <img src="https://placehold.co/200x150/B0E0E6/000000?text=Other+Electronics" alt="Other Electronics" class="mx-auto mb-4 rounded-md">
                     <h3 class="text-2xl font-semibold text-blue-800 mb-2">Other Electronics</h3>
                     <p class="text-gray-700 text-sm">Diverse range of gadgets and accessories.</p>
-                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200" onclick="openProductModal('home-entertainment')">View Details</button>
+                    <button class="mt-4 bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">View Details</button>
                 </div>
             </div>
         </section>
 
         <!-- Featured Products Section -->
-        <section id="products" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 bg-blue-50 rounded-xl shadow-xl">
+        <section id="products" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 bg-blue-50 rounded-xl shadow-xl scroll-reveal">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-10">Featured Products</h2>
             <p class="text-lg text-center text-gray-700 mb-12 max-w-3xl mx-auto">Discover our top-selling and newly arrived electronics. Quality and innovation at your fingertips.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -329,7 +355,7 @@
         </section>
 
         <!-- Brands Section -->
-        <section id="brands" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <section id="brands" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 scroll-reveal">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-10">Our Trusted Brands</h2>
             <p class="text-lg text-center text-gray-700 mb-12 max-w-3xl mx-auto">We partner with leading global brands to bring you the best quality and innovation in electronics.</p>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-8 items-center justify-center">
@@ -355,7 +381,7 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section id="testimonials" class="bg-blue-50 py-16 px-4 sm:px-6 lg:px-8 rounded-xl shadow-xl">
+        <section id="testimonials" class="bg-blue-50 py-16 px-4 sm:px-6 lg:px-8 rounded-xl shadow-xl scroll-reveal">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-10">What Our Clients Say</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Testimonial: Radhe Shyam Electronics -->
@@ -377,7 +403,7 @@
         </section>
 
         <!-- Contact Us Section -->
-        <section id="contact" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-xl mt-12 mb-12">
+        <section id="contact" class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 bg-white rounded-xl shadow-xl mt-12 mb-12 scroll-reveal">
             <h2 class="text-4xl font-bold text-center text-blue-700 mb-10">Contact Us</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div class="space-y-6 text-lg text-gray-700">
@@ -624,6 +650,28 @@
             if (event.target === this) {
                 closeProductModal();
             }
+        });
+
+        // --- Scroll Reveal Logic ---
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+
+        const observerOptions = {
+            root: null, // viewport as the root
+            rootMargin: '0px',
+            threshold: 0.1 // 10% of the element must be visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        scrollRevealElements.forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
