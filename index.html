@@ -1,233 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GG Gallery | KONKA Authorized Home Appliances Dealer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GG Gallery - Home Appliances</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6f8;
+  color:#111;
+}
 
-    body {
-      background: #f5f7fb;
-      color: #111;
-    }
+/* NAV */
+nav{
+  background:#0f172a;
+  color:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  position:sticky;
+  top:0;
+}
 
-    /* HEADER */
-    header {
-      background: #0f172a;
-      color: white;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-    }
+nav h1{
+  font-size:20px;
+}
 
-    header h1 {
-      font-size: 22px;
-    }
+nav a{
+  color:white;
+  margin-left:15px;
+  text-decoration:none;
+}
 
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+/* HERO */
+.hero{
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:80px 20px;
+}
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-      url('https://images.unsplash.com/photo-1588854337221-4cf9fa96059a') center/cover;
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
-    }
+.hero h2{
+  font-size:36px;
+  margin-bottom:10px;
+}
 
-    .hero h2 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
+.hero p{
+  font-size:18px;
+  margin-bottom:20px;
+}
 
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
+.btn{
+  padding:10px 15px;
+  margin:5px;
+  border:none;
+  cursor:pointer;
+  border-radius:5px;
+}
 
-    .btn {
-      padding: 12px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.btn1{
+  background:#3b82f6;
+  color:white;
+}
 
-    .btn-primary {
-      background: #3b82f6;
-      color: white;
-    }
+.btn2{
+  background:#25D366;
+  color:white;
+}
 
-    .btn-whatsapp {
-      background: #25D366;
-      color: white;
-    }
+/* SECTION */
+section{
+  padding:50px 20px;
+  text-align:center;
+}
 
-    /* SECTION */
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
+h2{
+  margin-bottom:20px;
+}
 
-    h2 {
-      margin-bottom: 30px;
-      font-size: 28px;
-    }
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  max-width:900px;
+  margin:auto;
+}
 
-    /* CARDS */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+.card{
+  background:white;
+  padding:15px;
+  border-radius:8px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+/* KONKA BOX */
+.konka{
+  background:#e5e7eb;
+}
 
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-      height: 140px;
-      object-fit: cover;
-    }
+/* FOOTER */
+footer{
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding:15px;
+}
 
-    .card h3 {
-      margin: 10px 0;
-    }
+/* WHATSAPP FLOAT */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:12px 15px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    /* ABOUT */
-    .about {
-      background: #e2e8f0;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* FLOAT WHATSAPP */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      padding: 15px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-  </style>
+</style>
 </head>
 
 <body>
 
-<header>
+<nav>
   <h1>GG Gallery</h1>
-  <nav>
+  <div>
     <a href="#home">Home</a>
     <a href="#products">Products</a>
     <a href="#konka">KONKA</a>
-    <a href="#about">About</a>
     <a href="#contact">Contact</a>
-  </nav>
-</header>
+  </div>
+</nav>
 
 <!-- HERO -->
 <div class="hero" id="home">
-  <h2>Authorized KONKA Dealer</h2>
-  <p>TVs • Refrigerators • Washing Machines • Air Conditioners</p>
+  <h2>GG Gallery</h2>
+  <p>Authorized KONKA Home Appliances Dealer in Nepal</p>
 
-  <button class="btn btn-primary">Call Now</button>
-  <button class="btn btn-whatsapp">WhatsApp Us</button>
+  <button class="btn btn1">Call Now</button>
+  <button class="btn btn2">WhatsApp</button>
 </div>
 
 <!-- PRODUCTS -->
 <section id="products">
-  <h2>Our Categories</h2>
+  <h2>Our Products</h2>
 
   <div class="grid">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6">
-      <h3>Smart TVs</h3>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1585238342028-4f0a1b9d7f59">
-      <h3>Refrigerators</h3>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1626808642875-0aa545482dfb">
-      <h3>Washing Machines</h3>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1581579185169-1b3a1c1b3f50">
-      <h3>Air Conditioners</h3>
-    </div>
+    <div class="card">📺 Smart TVs</div>
+    <div class="card">❄️ Refrigerators</div>
+    <div class="card">👕 Washing Machines</div>
+    <div class="card">🌬️ Air Conditioners</div>
   </div>
 </section>
 
 <!-- KONKA -->
-<section id="konka" class="about">
-  <h2>Official KONKA Partner</h2>
+<section id="konka" class="konka">
+  <h2>Official KONKA Dealer</h2>
   <p>
-    GG Gallery is an authorized main dealer of KONKA in Nepal.
-    We provide genuine home appliances with official warranty and trusted service.
-  </p>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <h2>About Us</h2>
-  <p>
-    GG Gallery is a trusted home appliance store in Kathmandu,
-    offering TVs, refrigerators, washing machines, and air conditioners
-    at competitive prices with reliable service.
+    We are an authorized dealer of KONKA in Nepal.
+    We provide genuine home appliances with official warranty.
   </p>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="about">
+<section id="contact">
   <h2>Contact Us</h2>
   <p>📍 Kathmandu, Nepal</p>
   <p>📞 +977-98XXXXXXXX</p>
-  <p>💬 WhatsApp available 24/7</p>
+  <p>💬 WhatsApp Available</p>
 </section>
 
 <footer>
-  <p>© 2026 GG Gallery | Authorized KONKA Dealer</p>
+  © 2026 GG Gallery | KONKA Dealer
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/97798XXXXXXXX">
-  WhatsApp
+<a class="whatsapp" href="https://wa.me/97798XXXXXXXX">
+WhatsApp
 </a>
 
 </body>
