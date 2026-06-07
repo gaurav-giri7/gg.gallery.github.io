@@ -1,143 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GG Gallery | Electronics Wholesale & Retail | Kathmandu</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<title>GG Gallery | Home Appliances | Kathmandu</title>
 
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #333; scroll-behavior: smooth; }
+<script src="https://cdn.tailwindcss.com"></script>
 
-        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .animate-fade-in { animation: fadeIn 1.5s ease-out forwards; }
+<style>
+body{
+    font-family: Inter, sans-serif;
+    background:#f8fafc;
+}
 
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-slide-in-up { animation: slideInUp 0.8s ease-out forwards; }
+/* TOP BAR */
+.top-bar{
+    background:#1e293b;
+    color:#cbd5e0;
+    font-size:14px;
+}
 
-        .top-bar { background-color: #1e293b; color: #cbd5e0; font-size: 0.875rem; }
-        .main-nav { background-color: #334155; }
-        .sticky-header { position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+/* NAV */
+.main-nav{
+    background:#334155;
+}
 
-        .hamburger-icon { display: none; cursor: pointer; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; }
-        .hamburger-icon div { width: 100%; height: 3px; background-color: white; border-radius: 2px; }
+/* STICKY */
+.sticky-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+}
 
-        .nav-menu { display: none; flex-direction: column; width: 100%; text-align: center; }
-        .nav-menu.active { display: flex; }
+/* HERO */
+.hero{
+    background:url('https://images.unsplash.com/photo-1588854337221-4cf9fa96059a') center/cover;
+    height:500px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+}
+.hero-overlay{
+    background:rgba(0,0,0,0.55);
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
 
-        @media (max-width: 768px) {
-            .hamburger-icon { display: flex; }
-            .nav-full { display: none; }
-        }
+/* CARDS */
+.card{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+.card:hover{
+    transform:translateY(-5px);
+}
 
-        .slider-container { position: relative; width: 100%; height: 550px; overflow: hidden; }
+/* PRODUCT IMAGES */
+.card img{
+    width:100%;
+    border-radius:10px;
+}
 
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .slide.active { opacity: 1; }
-
-        .slider-text-overlay {
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-button {
-            background-color: #06b6d4;
-            padding: 12px 25px;
-            border-radius: 30px;
-        }
-
-        .hero-button:hover {
-            background-color: #0891b2;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .whatsapp {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            padding: 12px 15px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+/* WHATSAPP BUTTON */
+.whatsapp{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    padding:12px 16px;
+    border-radius:50px;
+    font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
 <!-- TOP BAR -->
-<div class="top-bar p-2 flex justify-between px-4">
+<div class="top-bar flex justify-between px-4 py-2">
     <div>📞 9849666682 / 015326600</div>
     <div>📧 gg.gallery07@gmail.com</div>
 </div>
 
 <!-- NAV -->
-<header class="main-nav p-4 sticky-header flex justify-between items-center text-white">
-    <h1 class="text-2xl font-bold">GG Gallery</h1>
+<header class="main-nav text-white p-4 flex justify-between sticky-header">
+    <h1 class="font-bold text-xl">GG Gallery</h1>
 
-    <nav class="hidden md:flex space-x-6 nav-full">
+    <nav class="hidden md:block space-x-4">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#products">Products</a>
         <a href="#brands">Brands</a>
+        <a href="#inquiry">Inquiry</a>
         <a href="#contact">Contact</a>
     </nav>
-
-    <div class="hamburger-icon md:hidden" onclick="toggleMenu()">
-        <div></div><div></div><div></div>
-    </div>
 </header>
 
-<!-- MOBILE MENU -->
-<div id="mobileMenu" class="nav-menu bg-slate-700 text-white p-4">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#products">Products</a>
-    <a href="#brands">Brands</a>
-    <a href="#contact">Contact</a>
-</div>
-
 <!-- HERO -->
-<section id="home" class="slider-container">
-    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1588854337221-4cf9fa96059a')">
-        <div class="slider-text-overlay">
-            <h2 class="text-4xl font-bold">Authorized KONKA Dealer</h2>
-            <p>TV • Fridge • Washing Machine • AC</p>
-            <a class="hero-button mt-4" href="#products">Explore Products</a>
-        </div>
+<section id="home" class="hero">
+    <div class="hero-overlay">
+        <h1 class="text-4xl font-bold">Authorized KONKA Dealer</h1>
+        <p>TV • Refrigerator • Washing Machine • Air Conditioner</p>
     </div>
 </section>
 
@@ -147,8 +121,8 @@
 
     <p class="max-w-3xl mx-auto">
         GG Gallery is a trusted home appliance store in Kathmandu.
-        We are an <b>Authorized Main Dealer of KONKA</b> offering TVs, refrigerators,
-        washing machines and air conditioners with official warranty.
+        We are an <b>Authorized Main Dealer of KONKA</b> providing genuine TVs, refrigerators,
+        washing machines and air conditioners with official warranty and best service.
     </p>
 </section>
 
@@ -158,42 +132,89 @@
 
     <div class="grid md:grid-cols-4 gap-4">
 
-        <div class="card">📺 Smart TVs</div>
-        <div class="card">❄️ Refrigerators</div>
-        <div class="card">👕 Washing Machines</div>
-        <div class="card">🌬️ Air Conditioners</div>
+        <div class="card">
+            <img src="tv.png" alt="TV">
+            <p>Smart TV</p>
+        </div>
+
+        <div class="card">
+            <img src="fridge.png" alt="Fridge">
+            <p>Refrigerator</p>
+        </div>
+
+        <div class="card">
+            <img src="washing.png" alt="Washing Machine">
+            <p>Washing Machine</p>
+        </div>
+
+        <div class="card">
+            <img src="ac.png" alt="AC">
+            <p>Air Conditioner</p>
+        </div>
 
     </div>
 </section>
 
 <!-- BRANDS -->
 <section id="brands" class="p-10 text-center bg-gray-100">
-    <h2 class="text-3xl font-bold mb-6">Brands</h2>
-    <p>Official Dealer of KONKA & Other Brands</p>
+    <h2 class="text-3xl font-bold">Brands</h2>
+
+    <p class="mt-4">Official Dealer of KONKA & Other Brands</p>
+
+    <div class="flex justify-center gap-6 mt-6">
+        <img src="konka.png" width="120">
+        <img src="lg.png" width="120">
+        <img src="samsung.png" width="120">
+    </div>
+</section>
+
+<!-- INQUIRY SYSTEM -->
+<section id="inquiry" class="p-10 bg-white text-center">
+    <h2 class="text-3xl font-bold mb-6">Online Inquiry</h2>
+
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+          class="max-w-xl mx-auto bg-gray-100 p-6 rounded-xl space-y-4">
+
+        <input type="text" name="name" placeholder="Your Name"
+            class="w-full p-3 border rounded">
+
+        <input type="tel" name="phone" placeholder="Phone Number"
+            class="w-full p-3 border rounded">
+
+        <select name="product" class="w-full p-3 border rounded">
+            <option>TV</option>
+            <option>Refrigerator</option>
+            <option>Washing Machine</option>
+            <option>Air Conditioner</option>
+        </select>
+
+        <textarea name="message" placeholder="Message"
+            class="w-full p-3 border rounded"></textarea>
+
+        <button class="bg-blue-600 text-white px-6 py-3 rounded w-full hover:bg-blue-700">
+            Send Inquiry
+        </button>
+    </form>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="p-10 text-center">
-    <h2 class="text-3xl font-bold mb-4">Contact</h2>
+    <h2 class="text-3xl font-bold">Contact</h2>
+
     <p>📍 Kathmandu, Nepal</p>
-    <p>📞 9849666682</p>
+    <p>📞 9849666682 / 015326600</p>
+    <p>📧 gg.gallery07@gmail.com</p>
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-slate-900 text-white p-5 text-center">
+<footer class="bg-slate-900 text-white p-4 text-center">
     © 2026 GG Gallery | KONKA Dealer
 </footer>
 
 <!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/9779849666682">
-    WhatsApp
+<a class="whatsapp" href="https://wa.me/9779849666682?text=Hello%20GG%20Gallery%2C%20I%20want%20to%20inquire%20about%20home%20appliances">
+WhatsApp Inquiry
 </a>
-
-<script>
-function toggleMenu(){
-    document.getElementById("mobileMenu").classList.toggle("active");
-}
-</script>
 
 </body>
 </html>
